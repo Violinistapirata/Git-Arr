@@ -1,10 +1,13 @@
-import ProductList from "./components/ProductList"
 
 function App() {
 
   return (
     <>
-     <ProductList />
+     <NavBar/>
+     <div className="page-container">
+      <ProductList />
+     </div>
+     <Footer/>
     </>
   )
 }
