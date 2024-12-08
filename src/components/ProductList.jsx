@@ -4,6 +4,12 @@ import supabase from "../supabase/config";
 //HOOKS
 import { useState, useEffect } from "react";
 
+//COMPONENTS
+import ProductCard from "./ProductCard";
+
+//STYLES
+import "./ProductList.css"
+
 /* ------------------------------------------------------- */
 
 function ProductList() {
@@ -23,23 +29,12 @@ function ProductList() {
 
   return (
     <>
-      {productsList.map((product) => {
-        return (
-          <div key={product.id}>
-            <ul>
-              <li>TITLE: {product.title}</li>
-              <li>CATEGORY: {product.category}</li>
-              <li>CREATED AT: {product.created_at}</li>
-              <li>DESCRIPTION: {product.description}</li>
-              <li>FEATURED: {product.featured}</li>
-              <li>IMAGE: {product.image}</li>
-              <li>PRICE: {product.price}</li>
-              <li>STOCK: {product.stock}</li>
-            </ul>
-          </div>
-        );
-      })}
-      <div>ProductList</div>
+      <h1>Product List</h1>
+      <section className="product-list">
+        {productsList.map((product) => {
+          return <ProductCard key={product.id} product={product} />;
+        })}
+      </section>
     </>
   );
 }
