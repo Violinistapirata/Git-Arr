@@ -1,3 +1,7 @@
+//COMPONENTS
+import NavBar from "./components/NavBar"
+import ProductList from "./components/ProductList"
+import Footer from "./components/Footer"
 
 function App() {
 
