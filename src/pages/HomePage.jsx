@@ -1,9 +1,9 @@
-import ProductList from "../components/ProductList";
+import ProductsList from "../components/ProductsList";
 
 function HomePage(){
     return(
         <>
-        <ProductList />
+        <ProductsList />
         </>
     )
 }

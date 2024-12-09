@@ -1,4 +1,7 @@
+//ROUTES
 import { Link } from "react-router-dom";
+
+/* ----------------------------------------------- */
 
 function ProductCard({ product: { image, title, category, price, id } }) {
   const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"];

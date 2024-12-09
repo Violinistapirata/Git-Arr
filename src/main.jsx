@@ -1,13 +1,26 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
-createRoot(document.getElementById('root')).render(
+//ROUTES
+import { BrowserRouter as Router } from "react-router-dom";
+
+//CONTEXTS
+import ProductsListProviderWrapper from "./Contexts/productsList.context.jsx";
+
+//COMPONENTS
+import App from "./App.jsx";
+
+//STYLES
+import "./index.css";
+
+/* ----------------------------------------------- */
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Router>
-    <App />
+      <ProductsListProviderWrapper>
+        <App />
+      </ProductsListProviderWrapper>
     </Router>
-  </StrictMode>,
-)
+  </StrictMode>
+);

@@ -8,6 +8,8 @@ import CartPage from "./pages/CartPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import { Routes, Route } from "react-router-dom";
 
+/* ----------------------------------------------- */
+
 function App() {
   return (
     <>
@@ -16,7 +18,7 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/about" element={<AboutPage/>} />
        {/* <div className="page-container">*/}
-          <Route path="/product/:productId" element={<ProductDetailsPage />}/>
+          <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
           <Route path="/cart" element={<CartPage/>} />
           <Route path="*" element={<ErrorPage/>}/>
        { /*</div>*/}

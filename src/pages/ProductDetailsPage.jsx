@@ -1,6 +1,14 @@
-import { useParams } from "react-router-dom"
+//CONTEXT
+import { productsListContext } from "../Contexts/productsList.context"
 
-function ProductDetailsPage({productsList}) {
+//HOOKS
+import { useParams } from "react-router-dom"
+import { useContext } from "react"
+
+/* ----------------------------------------------- */
+
+function ProductDetailsPage() {
+    const {productsList} = useContext(productsListContext)
     const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"]
     const {productId} = useParams()
     const product = productsList.filter(product => product.id === productId)
