@@ -1,13 +1,16 @@
-function ProductCard({ product: { image, title, category, price } }) {
-    const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"]
-  return (
-    <div className="product-card">
-      <img src={image} alt="product-image" />
-      <h3>{title}</h3>
-      <h4>{categoriesArray[category]} guitarr</h4>
-      <p>{price}€</p>
+import { Link } from "react-router-dom";
 
-      {/* <ul>
+function ProductCard({ product: { image, title, category, price, id } }) {
+  const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"];
+  return (
+    <Link to={"/product/" + id}>
+      <div className="product-card">
+        <img src={image} alt="product-image" />
+        <h3>{title}</h3>
+        <h4>{categoriesArray[category]} guitarr</h4>
+        <p>{price}€</p>
+
+        {/* <ul>
         <li>TITLE: {product.title}</li>
         <li>CATEGORY: {product.category}</li>
         <li>CREATED AT: {product.created_at}</li>
@@ -17,7 +20,8 @@ function ProductCard({ product: { image, title, category, price } }) {
         <li>PRICE: {product.price}</li>
         <li>STOCK: {product.stock}</li>
       </ul> */}
-    </div>
+      </div>
+    </Link>
   );
 }
 

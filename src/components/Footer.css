@@ -4,6 +4,10 @@
     margin-top: auto;
     width: 100%;
     font-size: 1.5rem;
+    a{
+        text-decoration: none;
+        color:white
+    }
 
 }
 

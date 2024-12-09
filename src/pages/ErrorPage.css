@@ -1,0 +1,46 @@
+.error-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #1c1c1c;
+    color: white;
+    text-align: center;
+   
+}
+
+.error-page-title {
+    font-size: 10rem;
+    color: #ffa006;
+}
+
+.error-text {
+    font-size: 1.5rem;
+    margin: 5px;
+}
+
+.error-description {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin: 20px;
+    width: 45%;
+}
+
+.error-img {
+    width: 150px;
+    margin: 20px
+}
+
+.error-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #ffa006;
+    text-decoration: none;
+    font-size: 1.3rem;
+    a{
+        text-decoration: none;
+    }
+    
+}
