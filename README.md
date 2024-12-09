@@ -1,8 +1,23 @@
-# React + Vite
+# Git-arr
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Git-arr es una página web e-commerce que te permitirá adquirir tu guitarra deseada. Podrás ver las guitarras más destacadas del mercado, ver todas las diferentes categorias de guitarras que hay y luego podrás añadir a tu carro de compras las guitarras que desees comprar.
 
-Currently, two official plugins are available:
+## App routes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+|        Routes        |         Description                 |
+|----------------------|-------------------------------------|
+| /                    | This route show the Home Page       |
+| /about               | This route show the About Page      |
+| /product/:productId  | This route show the product detail  |
+| /cart                | This route show the Cart Page       |
+| /*                   | This route show the Error Page      |   
+
+## Integrantes
+Sven Andersson, Èric Masip, Roxana Ferramola 
+
+## Tecnologías
+
+- React
+- Supabase
+- React-Router-dom
+
