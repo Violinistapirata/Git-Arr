@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 
 //CONTEXTS
-import ProductsListProviderWrapper from "./Contexts/productsList.context.jsx";
+import {ProductsListProviderWrapper} from "./Contexts/productsList.context.jsx";
 
 //COMPONENTS
 import App from "./App.jsx";
