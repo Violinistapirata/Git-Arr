@@ -15,7 +15,7 @@ import "./ProductList.css"
 function ProductList() {
   //STATES
   const [productsList, setProductsList] = useState([]);
-
+    //change name to ProductsList
   //
   const getData = async () => {
     const { data, error } = await supabase.from("products").select("*");
