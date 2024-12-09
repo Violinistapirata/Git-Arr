@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/about" element={<AboutPage/>} />
        {/* <div className="page-container">*/}
-          <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
+          <Route path="/product/:productId" element={<ProductDetailsPage />}/>
           <Route path="/cart" element={<CartPage/>} />
           <Route path="*" element={<ErrorPage/>}/>
        { /*</div>*/}
