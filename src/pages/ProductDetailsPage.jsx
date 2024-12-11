@@ -20,9 +20,9 @@ function ProductDetailsPage() {
       try {
         const response = await supabase
           .from("products")
-          .select("*")
+          .select("*, products_categories (category_name)")
           .eq("id", `${productId}`);
-        console.log("esto es la response", response);
+        console.log("esto es la response", response.data[0]);
         setProduct(response.data[0]);
       } catch (error) {
         console.error(error);
@@ -40,7 +40,7 @@ function ProductDetailsPage() {
           <h1>{product.title}</h1>
           <p>{product.description}</p>
           {product.featured && <span>{"⭐"}</span>}
-          <h4>{categoriesArray[product.category]} guitarr</h4>
+          <h4>{product.products_categories.category_name}</h4>
           <h4>{product.price}€</h4>
           <h2>
             {product.stock > 0
