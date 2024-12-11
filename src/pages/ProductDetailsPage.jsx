@@ -9,29 +9,26 @@ import { useEffect, useState } from "react";
 
 function ProductDetailsPage() {
   const [product, setProduct] = useState(null);
-  /* const {productsList} = useContext(productsListContext)
-    console.log(productsList); */
-
-  const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"];
   const { productId } = useParams();
-  console.log(productId);
-  useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const response = await supabase
-          .from("products")
-          .select("*, products_categories (category_name)")
-          .eq("id", `${productId}`);
-        console.log("esto es la response", response.data[0]);
-        setProduct(response.data[0]);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getProduct();
-  }, []);
+ 
 
-  /* productsList.filter(product => product.id == productId) */
+  
+  
+  useEffect(() => {
+      const getProduct = async () => {
+          try {
+              const response = await supabase
+              .from("products")
+              .select("*, products_categories (category_name)")
+              .eq("id", `${productId}`);
+              setProduct(response.data[0]);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getProduct();
+    }, []);
+    
   return (
     <>
       {product && (
