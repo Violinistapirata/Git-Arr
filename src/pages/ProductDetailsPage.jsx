@@ -1,33 +1,56 @@
-//CONTEXT
-import { productsListContext } from "../Contexts/productsList.context"
+//DATABASE
+import supabase from "../supabase/config";
 
 //HOOKS
-import { useParams } from "react-router-dom"
-import { useContext } from "react"
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 /* ----------------------------------------------- */
 
 function ProductDetailsPage() {
-    const {productsList} = useContext(productsListContext)
-    console.log(productsList);
-    
-    const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"]
-    const {productId} = useParams()
-    const product = productsList.filter(product => product.id == productId)
-    console.log(product);
-    
+  const [product, setProduct] = useState(null);
+  /* const {productsList} = useContext(productsListContext)
+    console.log(productsList); */
+
+  const categoriesArray = ["Classical", "Electric", "Acoustic", "Flamenco"];
+  const { productId } = useParams();
+  console.log(productId);
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const response = await supabase
+          .from("products")
+          .select("*")
+          .eq("id", `${productId}`);
+        console.log("esto es la response", response);
+        setProduct(response.data[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getProduct();
+  }, []);
+
+  /* productsList.filter(product => product.id == productId) */
   return (
-    <article className="product-details-card">
-        <img src={product[0].image} alt="guitar image" />
-        <h1>{product[0].title}</h1>
-        <p>{product[0].description}</p>
-       {product[0].featured && <span>{"⭐"}</span>}
-       <h4>{categoriesArray[product[0].category]} guitarr</h4>
-       <h4>{product[0].price}€</h4>
-        <h2>{product[0].stock > 0? `IN STOCK: ${product[0].stock}` : "OUT OF STOCK"}</h2>
-        <button className="add-to-cart-button" >Add to card</button>
-    </article>
-  )
+    <>
+      {product && (
+        <article className="product-details-card">
+          <img src={product.image} alt="guitar image" />
+          <h1>{product.title}</h1>
+          <p>{product.description}</p>
+          {product.featured && <span>{"⭐"}</span>}
+          <h4>{categoriesArray[product.category]} guitarr</h4>
+          <h4>{product.price}€</h4>
+          <h2>
+            {product.stock > 0
+              ? `IN STOCK: ${product.stock}`
+              : "OUT OF STOCK"}
+          </h2>
+        </article>
+      )}
+    </>
+  );
 }
 /* >TITLE: {product.title}</li>
         <li>CATEGORY: {product.category}</li>
@@ -37,4 +60,4 @@ function ProductDetailsPage() {
         <li>IMAGE: {product.image}</li>
         <li>PRICE: {product.price}</li>
         <li>STOCK: {product.s */
-export default ProductDetailsPage
+export default ProductDetailsPage;
