@@ -7,6 +7,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import { Routes, Route } from "react-router-dom";
+import CategoryPage from "./pages/CategoryPage.jsx";
 
 /* ----------------------------------------------- */
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/about" element={<AboutPage/>} />
        {/* <div className="page-container">*/}
           <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
+          <Route path="/category/:categoryId" element={<CategoryPage/>}/>
           <Route path="/cart" element={<CartPage/>} />
           <Route path="*" element={<ErrorPage/>}/>
        { /*</div>*/}
