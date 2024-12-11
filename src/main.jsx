@@ -5,22 +5,25 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 
 //CONTEXTS
-import {ProductsListProviderWrapper} from "./Contexts/productsList.context.jsx";
+import { ProductsListProviderWrapper } from "./Contexts/productsList.context.jsx";
 
 //COMPONENTS
 import App from "./App.jsx";
 
 //STYLES
 import "./index.css";
+import { CartProvider } from "./Contexts/cart.context.jsx";
 
 /* ----------------------------------------------- */
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Router>
-      <ProductsListProviderWrapper>
-        <App />
-      </ProductsListProviderWrapper>
+      <CartProvider>
+        <ProductsListProviderWrapper>
+          <App />
+        </ProductsListProviderWrapper>
+      </CartProvider>
     </Router>
   </StrictMode>
 );

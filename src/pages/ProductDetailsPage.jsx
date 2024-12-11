@@ -25,6 +25,7 @@ function ProductDetailsPage() {
        <h4>{categoriesArray[product[0].category]} guitarr</h4>
        <h4>{product[0].price}€</h4>
         <h2>{product[0].stock > 0? `IN STOCK: ${product[0].stock}` : "OUT OF STOCK"}</h2>
+        <button className="add-to-cart-button" >Add to card</button>
     </article>
   )
 }
