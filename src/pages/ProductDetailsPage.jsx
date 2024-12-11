@@ -47,6 +47,7 @@ function ProductDetailsPage() {
               ? `IN STOCK: ${product.stock}`
               : "OUT OF STOCK"}
           </h2>
+          <button className="add-to-cart-button" >Add to card</button>
         </article>
       )}
     </>
