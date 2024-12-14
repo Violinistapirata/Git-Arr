@@ -1,11 +1,9 @@
-/* import FeaturedProducts from "../components/FeaturedProducts"; */
-import ProductsList from "../components/ProductsList";
+import FeaturedProducts from "../components/FeaturedProducts";
 
 function HomePage(){
     return(
         <>
-       {/*  <FeaturedProducts/> */}
-        <ProductsList />
+        <FeaturedProducts/>
         </>
     )
 }
