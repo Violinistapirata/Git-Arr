@@ -9,9 +9,22 @@ import { cartContext } from "../Contexts/cart.context";
 /* ----------------------------------------------- */
 
 function ProductDetailsPage() {
-  const [product, setProduct] = useState(null);
-  const { productId } = useParams();
   const { addItem } = useContext(cartContext);
+
+
+  const [product, setProduct] = useState({});
+  const {
+    image,
+    title,
+    description,
+    featured,
+    price,
+    stock,
+    id,
+    products_categories,
+  } = product;
+
+  const { productId } = useParams();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -30,28 +43,31 @@ function ProductDetailsPage() {
 
   return (
     <>
-      {product && (
         <article className="product-details-card">
-          <img src={product.image} alt="guitar image" />
-          <h1>{product.title}</h1>
-          <p>{product.description}</p>
-          {product.featured && <span>{"⭐"}</span>}
-          <h4>{product.products_categories.category_name}</h4>
-          <h4>{product.price}€</h4>
+          <img src={image} alt="guitar image" />
+          <h1>{title}</h1>
+          <p>{description}</p>
+          {featured && <span>{"⭐"}</span>}
+          <h4>{products_categories?.category_name}</h4>
+          <h4>{price}€</h4>
           <h2>
-            {product.stock > 0 ? `IN STOCK: ${product.stock}` : "OUT OF STOCK"}
+            {stock > 0 ? `IN STOCK: ${stock}` : "OUT OF STOCK"}
           </h2>
           <button
             className="add-to-cart-button"
             onClick={() => {
-              console.log(product)
-              addItem(product.id);
+              addItem(id);
             }}
           >
-            Add to card
+            Add to cart
           </button>
+         
+        
+        
+          
+        
+         
         </article>
-      )}
     </>
   );
 }
