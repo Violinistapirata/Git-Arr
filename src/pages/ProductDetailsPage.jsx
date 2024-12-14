@@ -3,32 +3,31 @@ import supabase from "../supabase/config";
 
 //HOOKS
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { cartContext } from "../Contexts/cart.context";
 
 /* ----------------------------------------------- */
 
 function ProductDetailsPage() {
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
- 
+  const { addItem } = useContext(cartContext);
 
-  
-  
   useEffect(() => {
-      const getProduct = async () => {
-          try {
-              const response = await supabase
-              .from("products")
-              .select("*, products_categories (category_name)")
-              .eq("id", `${productId}`);
-              setProduct(response.data[0]);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getProduct();
-    }, []);
-    
+    const getProduct = async () => {
+      try {
+        const response = await supabase
+          .from("products")
+          .select("*, products_categories (category_name)")
+          .eq("id", `${productId}`);
+        setProduct(response.data[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getProduct();
+  }, []);
+
   return (
     <>
       {product && (
@@ -40,11 +39,17 @@ function ProductDetailsPage() {
           <h4>{product.products_categories.category_name}</h4>
           <h4>{product.price}€</h4>
           <h2>
-            {product.stock > 0
-              ? `IN STOCK: ${product.stock}`
-              : "OUT OF STOCK"}
+            {product.stock > 0 ? `IN STOCK: ${product.stock}` : "OUT OF STOCK"}
           </h2>
-          <button className="add-to-cart-button" >Add to card</button>
+          <button
+            className="add-to-cart-button"
+            onClick={() => {
+              console.log(product)
+              addItem(product.id);
+            }}
+          >
+            Add to card
+          </button>
         </article>
       )}
     </>
