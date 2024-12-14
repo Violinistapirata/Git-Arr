@@ -8,45 +8,47 @@ import { useEffect, useState } from "react";
 /* ----------------------------------------------- */
 
 function ProductDetailsPage() {
-  const [product, setProduct] = useState(null);
-  const { productId } = useParams();
- 
 
-  
-  
+  const [product, setProduct] = useState({});
+  const {
+    image,
+    title,
+    description,
+    featured,
+    price,
+    stock,
+    products_categories,
+  } = product;
+
+  const { productId } = useParams();
+
   useEffect(() => {
-      const getProduct = async () => {
-          try {
-              const response = await supabase
-              .from("products")
-              .select("*, products_categories (category_name)")
-              .eq("id", `${productId}`);
-              setProduct(response.data[0]);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getProduct();
-    }, []);
-    
+    const getProduct = async () => {
+      try {
+        const response = await supabase
+          .from("products")
+          .select("*, products_categories (category_name)")
+          .eq("id", `${productId}`);
+        setProduct(response.data[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getProduct();
+  }, []);
+
   return (
     <>
-      {product && (
         <article className="product-details-card">
-          <img src={product.image} alt="guitar image" />
-          <h1>{product.title}</h1>
-          <p>{product.description}</p>
-          {product.featured && <span>{"⭐"}</span>}
-          <h4>{product.products_categories.category_name}</h4>
-          <h4>{product.price}€</h4>
-          <h2>
-            {product.stock > 0
-              ? `IN STOCK: ${product.stock}`
-              : "OUT OF STOCK"}
-          </h2>
-          <button className="add-to-cart-button" >Add to card</button>
+          <img src={image} alt="guitar image" />
+          <h1>{title}</h1>
+          <p>{description}</p>
+          {featured && <span>{"⭐"}</span>}
+          <h4>{products_categories?.category_name}</h4>
+          <h4>{price}€</h4>
+          <h2>{stock > 0 ? `IN STOCK: ${stock}` : "OUT OF STOCK"}</h2>
+          <button className="add-to-cart-button">Add to card</button>
         </article>
-      )}
     </>
   );
 }
