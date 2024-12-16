@@ -11,7 +11,10 @@ function Footer() {
           <h1 className="about-us">About us</h1>
         </Link>
         <img src={linkedin} />
-        <img src={git} />
+
+        <Link to="/admin">
+          <img src={git} />
+        </Link>
       </div>
     </footer>
   );
