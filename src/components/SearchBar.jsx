@@ -1,7 +1,10 @@
 import "./SearchBar.css";
 import glass from "../assets/glass.svg";
+import { useState } from "react";
 
 function SearchBar() {
+    const [search,setSearch] = useState();
+
 	return (
 		<form className="search-bar">
 			<input

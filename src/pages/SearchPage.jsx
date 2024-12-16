@@ -13,8 +13,7 @@ import "./CategoryPage.css";
 
 /* ------------------------------------------------------- */
 
-function CategoryPage() {
-	const [category, setCategory] = useState(null);
+function SearchPage() {
 	const [products, setProducts] = useState([]);
 	//const [catId, setCatId] = useState(null);
 	const [catOrder, setCatOrder] = useState({
@@ -40,7 +39,7 @@ function CategoryPage() {
 		try {
 			const { data } = await supabase
 				.from("products")
-				.select("*, products_categories(category_name)")
+				.select("*")
 				.eq("category", `${categoryId}`)
 				.order(catOrder.orderBy, { ascending: catOrder.ascending });
 			//console.log("this is data: ", data);
@@ -50,23 +49,7 @@ function CategoryPage() {
 			console.error(error);
 		}
 	};
-	const getCategory = async () => {
-		try {
-			const { data } = await supabase
-				.from("products_categories")
-				.select("*")
-				.eq("id", `${categoryId}`);
-
-			//console.log(data[0]);
-			if (data) {
-				setCategory(data[0]);
-			} else {
-				navigate("/404");
-			}
-		} catch (error) {
-			console.error(error);
-		}
-	};
+	
 
 	const saveOrderBy = (orderby) => {
 		setCatOrder({ ...catOrder, orderBy: orderby });
@@ -75,13 +58,10 @@ function CategoryPage() {
 		setCatOrder({ ...catOrder, ascending: order });
 	};
 
-	useEffect(() => {
-        getCategory();
-	}, [categoryId]);
 
 	useEffect(() => {
 		getProducts();
-	}, [catOrder,categoryId]);
+	}, [catOrder]);
 
 	// console.log("state products", products);
 	// console.log("state category", category);
@@ -137,4 +117,4 @@ function CategoryPage() {
 	}
 }
 
-export default CategoryPage;
+export default SearchPage;

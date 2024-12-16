@@ -9,6 +9,7 @@ import CategoryPage from "./pages/CategoryPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import SearchPage from "./pages/SearchPage.jsx";
 
 //COMPONENTS
 import NavBar from "./components/NavBar";
@@ -26,6 +27,7 @@ function App() {
        {/* <div className="page-container">*/}
           <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
           <Route path="/category/:categoryId" element={<CategoryPage/>}/>
+          <Route path="/search/:query" element={<SearchPage/>}/>
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/admin" element={<AdminPage/>}/>
           <Route path="*" element={<ErrorPage/>}/>
