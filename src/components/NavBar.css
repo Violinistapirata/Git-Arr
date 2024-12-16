@@ -1,107 +1,65 @@
-
 .nav {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
-    padding: 0.5rem;
-    a{
-      text-decoration: none;
-      color: #000000;
-    }
-  }
-  
-  .nav-left{
-    display: flex;
-    align-items: center;
-  }
-
-
- .logo {
-    width: 120px;
-    margin-right: 1rem;
-    cursor: pointer;
-  }
-  
-  .brand-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000000;
-    margin: 0;
-  }
-
-  .brand-name:hover{
-    cursor: pointer;
-  }
-  
-  .search-container {
-    flex: 1;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    text-align: center;
-  }
-  
-  .search-bar {
-    display: flex;
-    align-items: center;
-    background-color: #ecececd4;
-    border-radius: 20px;
-    overflow: hidden;
-    width: 60%;
-    max-width: 600px;
-  }
-  
-  
-  .search-button {
-    background-color: #000000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .search-button:hover {
-    background-color: #ffa006;
-  }
-  
-  .glass {
-    width: 18px;
-  }
-  
-  .nav-right .cart {
-    width: 30px;
-    cursor: pointer;
-    margin-right: 3rem;
-  }
-  
-.categories{
-    height: 3rem;
-    background-color: #000000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
-    color: #ffffff;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
+	padding: 0.5rem;
+	a {
+		text-decoration: none;
+		color: #000000;
+	}
 }
-  
- .category-list{
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    align-self: center;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-    height: 100%;
 
- }
+.nav-left {
+	display: flex;
+	align-items: center;
+}
 
- .list:hover{
-    background-color: #ffa006;
-    border-radius: 5px;
-    padding: 12px 12px;
-    cursor: pointer;
-    
- }
+.logo {
+	width: 120px;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+.brand-name {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #000000;
+	margin: 0;
+}
+
+.brand-name:hover {
+	cursor: pointer;
+}
+
+.nav-right .cart {
+	width: 30px;
+	cursor: pointer;
+	margin-right: 3rem;
+}
+
+.categories {
+	height: 3rem;
+	background-color: #000000;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
+	color: #ffffff;
+}
+
+.category-list {
+	display: flex;
+	justify-content: space-around;
+	list-style: none;
+	align-self: center;
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	height: 100%;
+}
+
+.list:hover {
+	background-color: #ffa006;
+	border-radius: 5px;
+	padding: 12px 12px;
+	cursor: pointer;
+}
