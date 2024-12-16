@@ -20,8 +20,10 @@ useEffect(() => {
     try {
       const { data, error } = await supabase
         .from("products")
-        .select()
+        .select("*, products_categories(category_name)")
       setProducts(data);
+      console.log(data);
+      
       if (error) {
         throw error;
       }
