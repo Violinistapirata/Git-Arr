@@ -1,7 +1,6 @@
 //HOOKS
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 //SUPABASE
 import supabase from "../supabase/config";
@@ -17,6 +16,7 @@ import "./CategoryPage.css";
 function CategoryPage() {
 	const [category, setCategory] = useState(null);
 	const [products, setProducts] = useState([]);
+	//const [catId, setCatId] = useState(null);
 	const [catOrder, setCatOrder] = useState({
 		orderBy: "title",
 		ascending: true,
@@ -24,7 +24,17 @@ function CategoryPage() {
 
 	const navigate = useNavigate();
 
-	const { categoryId } = useParams();
+	
+    const { categoryId } = useParams();
+
+    // const GetCatId = () => {
+    //     //const routeParams = useParams();
+    //     const { categoryId } = useParams();
+    //     setCatId(categoryId)
+    //     console.log(categoryId);
+        
+    // }
+   
 
 	const getProducts = async () => {
 		try {
@@ -66,15 +76,17 @@ function CategoryPage() {
 	};
 
 	useEffect(() => {
-		getCategory();
-	}, []);
+        getCategory();
+	}, [categoryId]);
 
 	useEffect(() => {
 		getProducts();
-	}, [catOrder]);
+	}, [catOrder,categoryId]);
 
 	// console.log("state products", products);
 	// console.log("state category", category);
+	// console.log("category id", catId);
+    
 
 	if (category !== null) {
 		return (
