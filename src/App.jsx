@@ -1,13 +1,18 @@
-//COMPONENTS
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+//ROUTES
+import { Routes, Route } from "react-router-dom";
+
+//PAGES
 import HomePage from "./pages/HomePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ProductDetailsPage from "./pages/ProductDetailsPage.jsx";
-import CartPage from "./pages/CartPage.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx";
-import { Routes, Route } from "react-router-dom";
 import CategoryPage from "./pages/CategoryPage.jsx";
+import CartPage from "./pages/CartPage.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
+
+//COMPONENTS
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 /* ----------------------------------------------- */
 
@@ -22,6 +27,7 @@ function App() {
           <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
           <Route path="/category/:categoryId" element={<CategoryPage/>}/>
           <Route path="/cart" element={<CartPage/>} />
+          <Route path="/admin" element={<AdminPage/>}/>
           <Route path="*" element={<ErrorPage/>}/>
        { /*</div>*/}
       </Routes>
