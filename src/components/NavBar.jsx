@@ -36,10 +36,18 @@ function NavBar() {
       </nav>
       <div className="categories">
         <ul className="category-list">
-          <li className="list">Classic guitars</li>
-          <li className="list">Acoustic guitars</li>
-          <li className="list">Flamenco guitars</li>
+        <Link to={"/category/1"}>
           <li className="list">Electric guitars</li>
+        </Link>
+        <Link to={"/category/2"}>
+          <li className="list">Acoustic guitars</li>
+        </Link>
+        <Link to={"/category/3"}>
+          <li className="list">Classic guitars</li>
+        </Link>
+        <Link to={"/category/4"}>
+          <li className="list">Flamenco guitars</li>
+        </Link>
         </ul>
       </div>
     </>
