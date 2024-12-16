@@ -35,20 +35,33 @@ function CartProvider(props) {
 
   const addItem = async (itemId) => {
     try {
-       console.log({itemId});
+      console.log({ itemId });
 
       setCart([...cart, itemId]);
-    console.log("this is cart" , cart)
-      
+      console.log("this is cart", cart);
+
       // supabase inserta el row entero de la tabla cart
       const { data, error } = await supabase
-      .from("cart")
-      .update([{ product_ids: cart }])
-      .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f");
+        .from("cart")
+        .update([{ product_ids: cart }])
+        .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f");
     } catch (error) {
       console.error(error);
     }
-    };
+
+    let productIds = cart.product_ids || [];
+    let updatedProductIds = [...productIds];
+    //buscamos si el carrito existe,si existe lo incrementa y si no existe lo agrega
+    const existingProduct = updatedProduct.findIndex((item) => item.id === itemId);
+
+    if (existingProduct !== -1) {
+      updatedProduct[existingProduct].count + 1;
+    } else {
+      updatedProduct.push({ id: itemId, count: 1 });
+    }
+  };
+
+  
   // supabase elimina el item del cart buscandolo por id
   const deleteItem = async (itemId) => {
     const { error } = await supabase.from("cart").delete().eq("id", itemId);
