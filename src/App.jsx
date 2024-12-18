@@ -27,7 +27,7 @@ function App() {
        {/* <div className="page-container">*/}
           <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
           <Route path="/category/:categoryId" element={<CategoryPage/>}/>
-          <Route path="/search/:query" element={<SearchPage/>}/>
+          <Route path="/search" element={<SearchPage/>}/>
           <Route path="/cart" element={<CartPage/>} />
           <Route path="/admin" element={<AdminPage/>}/>
           <Route path="*" element={<ErrorPage/>}/>
