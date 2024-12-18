@@ -40,7 +40,7 @@ function CategoryPage() {
 		try {
 			const { data } = await supabase
 				.from("products")
-				.select("*")
+				.select("*, products_categories(category_name)")
 				.eq("category", `${categoryId}`)
 				.order(catOrder.orderBy, { ascending: catOrder.ascending });
 			//console.log("this is data: ", data);
