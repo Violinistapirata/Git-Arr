@@ -1,5 +1,5 @@
 //ROUTES
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import supabase from "../supabase/config";
 
 /* ----------------------------------------------- */
@@ -12,14 +12,24 @@ function ProductCard({
     id,
     products_categories: { category_name },
   },
+  getProducts,
   setEditForm,
 }) {
   const location = useLocation().pathname;
-  /*  const handleDelete = (e) => supabase.from("products").delete().eq("id", e.id) */
-  const handleDelete = (e) => {
+   const handleDelete =  async (e) => {
+    try {
+      e.stopPropagation();
+      const { error } = await supabase.from("products").delete().eq("id", id);
+      if (error) {throw error}
+      getProducts();
+    } catch (error) {
+      console.error(error)
+    }
+    }
+ /*  const handleDelete = (e) => {
     e.stopPropagation();
-    console.log("THIS IS E.TARGET: ", e.target);
-  };
+    console.log("THIS IS ID: ", id);
+  }; */
   return (
     <div className="product-card">
       <Link to={"/product/" + id}>

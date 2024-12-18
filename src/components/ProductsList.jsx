@@ -15,22 +15,22 @@ import supabase from "../supabase/config";
 function ProductsList() {
 /*     const {productsList} = useContext(productsListContext) */
     const [products, setProducts] = useState([]);
-useEffect(() => {
-  async function getProducts() {
-    try {
-      const { data, error } = await supabase
-        .from("products")
-        .select("*, products_categories(category_name)")
-      setProducts(data);
-      console.log("THIS IS PRODUCT", data);
-      
-      if (error) {
-        throw error;
+    async function getProducts() {
+      try {
+        const { data, error } = await supabase
+          .from("products")
+          .select("*, products_categories(category_name)")
+        setProducts(data);
+        console.log("THIS IS PRODUCT", data);
+        
+        if (error) {
+          throw error;
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
-  }
+useEffect(() => {
   getProducts();
 }, [])
   return (
@@ -38,7 +38,7 @@ useEffect(() => {
       <h1>Product List</h1>
       <section className="product-list">
         {products.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          return <ProductCard key={product.id} product={product} getProducts={getProducts}/>;
         })}
       </section>
     </>
