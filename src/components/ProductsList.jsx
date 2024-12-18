@@ -22,7 +22,7 @@ useEffect(() => {
         .from("products")
         .select("*, products_categories(category_name)")
       setProducts(data);
-      console.log(data);
+      console.log("THIS IS PRODUCT", data);
       
       if (error) {
         throw error;

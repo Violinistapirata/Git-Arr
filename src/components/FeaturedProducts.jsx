@@ -19,7 +19,7 @@ function FeaturedProducts() {
       try {
         const { data } = await supabase
           .from("products")
-          .select()
+          .select("*, products_categories(category_name)")
           .eq("featured", true);
         setFeatured(data);
 
