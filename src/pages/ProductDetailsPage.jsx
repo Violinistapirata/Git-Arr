@@ -10,8 +10,6 @@ import { cartContext } from "../Contexts/cart.context";
 
 function ProductDetailsPage() {
   const { addItem } = useContext(cartContext);
-
-
   const [product, setProduct] = useState({});
   const {
     image,
@@ -56,17 +54,11 @@ function ProductDetailsPage() {
           <button
             className="add-to-cart-button"
             onClick={() => {
-              addItem(id);
+              addItem(product);
             }}
           >
             Add to cart
-          </button>
-         
-        
-        
-          
-        
-         
+          </button> 
         </article>
     </>
   );

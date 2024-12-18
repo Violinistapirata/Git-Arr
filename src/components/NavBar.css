@@ -33,10 +33,20 @@
 	cursor: pointer;
 }
 
-.nav-right .cart {
-	width: 30px;
+.nav-right {
 	cursor: pointer;
 	margin-right: 3rem;
+}
+
+.cart-inline {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.cart {
+	width: 30px;
 }
 
 .categories {

@@ -1,14 +1,27 @@
 import logo from "../assets/logo.png";
-import cart from "../assets/cart-logo.svg";
+import cartLogo from "../assets/cart-logo.svg";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 // import CartPage from "../pages/CartPage";
 import SearchBar from "./SearchBar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import supabase from "../supabase/config";
+import { cartContext } from "../Contexts/cart.context";
 
 function NavBar() {
 	const [categories, setCategories] = useState([]);
+	const [cartCount, setCartCount] = useState(0);
+	const { cart } = useContext(cartContext);
+
+	useEffect(() => {
+		let counter = 0;
+		cart.map((cartElement) => {
+			counter += cartElement.quantity || 0 
+			return cart;
+		})
+		setCartCount(counter)
+	}, [cart])
+
 	useEffect(() => {
 		async function getCategories() {
 			try {
@@ -40,8 +53,9 @@ function NavBar() {
 				</div>
 				<SearchBar />
 				<div className="nav-right">
-					<Link to="/cart">
-						<img className="cart" src={cart} alt="Cart" />
+					<Link to="/cart" className="cart-inline" >
+						<img className="cart" src={cartLogo} alt="Cart" />
+						<p>{cartCount}</p>
 					</Link>
 				</div>
 			</nav>
