@@ -13,7 +13,7 @@ function ProductCard({
     products_categories: { category_name },
   },
   getProducts,
-  setEditForm,
+  setEditProductForm,
 }) {
   const location = useLocation().pathname;
    const handleDelete =  async (e) => {
@@ -26,10 +26,6 @@ function ProductCard({
       console.error(error)
     }
     }
- /*  const handleDelete = (e) => {
-    e.stopPropagation();
-    console.log("THIS IS ID: ", id);
-  }; */
   return (
     <div className="product-card">
       <Link to={"/product/" + id}>
