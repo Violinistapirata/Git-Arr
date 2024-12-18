@@ -9,6 +9,7 @@ import ProductCard from "./ProductCard";
 
 // STYLES
 import './ProductsList.css'
+import './FeaturedProducts.css'
 /* ----------------------------------------------- */
 
 function FeaturedProducts() {
@@ -32,7 +33,7 @@ function FeaturedProducts() {
 
   return (
     <div>
-      <h1>Featured</h1>
+      <h1>Featured products</h1>
       <section className="product-list">
         {featured &&
           featured.map((product) => {
