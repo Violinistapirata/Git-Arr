@@ -8,7 +8,7 @@ import { useState } from "react"
 
 function AdminPage() {
   //add, edit, none
-  const [productForm, setProductForm] = useState({show:"none",id:""})
+  const [productForm, setProductForm] = useState({show:"edit",id:""})
   const [categoryForm, setCategoryForm] = useState({show:"none",id:""})
   return (
     <div>
@@ -21,8 +21,8 @@ function AdminPage() {
 
         </section>
         <section>
-          {productForm.show === "add" || productForm.show === "edit" && <ProductForm productForm={productForm} setProductForm={setProductForm}/> }
-          {categoryForm.show === "add" || categoryForm.show === "edit" && <CategoryForm categoryForm={categoryForm} setCategoryForm={setCategoryForm}/> }
+          {(productForm.show === "add" || productForm.show === "edit") && <ProductForm productForm={productForm} setProductForm={setProductForm}/> }
+          {(categoryForm.show === "add" || categoryForm.show === "edit") && <CategoryForm categoryForm={categoryForm} setCategoryForm={setCategoryForm}/> }
         </section>
     </div>
   )
