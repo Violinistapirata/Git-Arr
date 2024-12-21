@@ -1,11 +1,11 @@
 import Categories from "../components/Categories";
 import FeaturedProducts from "../components/FeaturedProducts";
 
-function HomePage(){
+function HomePage({categories, getCategories}){
     return(
         <>
         <FeaturedProducts/>
-        <Categories />
+        <Categories categories={categories} getCategories={getCategories} />
         </>
     )
 }
