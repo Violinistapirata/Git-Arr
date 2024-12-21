@@ -38,7 +38,7 @@ function ProductCard({
       </Link>
       {location === "/admin" && (
         <>
-          <button onClick={() => setProductForm({"show":true,"id":id})} >Edit</button>
+          <button onClick={() => setProductForm({show:"edit",id:id})} >Edit</button>
           <button onClick={(e) => handleDelete(e)}>
             <img
               src="../src/assets/trash-ca.png"
