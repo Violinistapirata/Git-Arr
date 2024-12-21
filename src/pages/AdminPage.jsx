@@ -8,7 +8,7 @@ import { useState } from "react"
 
 function AdminPage() {
   const [productForm, setProductForm] = useState({show:"none", id:""})
-  const [categoryForm, setCategoryForm] = useState({show:"add", id:""})
+  const [categoryForm, setCategoryForm] = useState({show:"none", id:""})
   
   return (
     <div>

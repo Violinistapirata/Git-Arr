@@ -1,15 +1,100 @@
-function CategoryForm({categoryForm, setCategoryForm}) {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setCategoryForm({...categoryForm, show: true})
+//DATABASE
+import supabase from "../supabase/config";
+
+//HOOKS
+import { useEffect, useState } from "react";
+
+/* ----------------------------------------------- */
+
+function CategoryForm({ categoryForm, setCategoryForm }) {
+  //State for the input values
+  const [inputs, setInputs] = useState({
+    categoryName: "",
+    categoryImage: "",
+  });
+  const { categoryName, categoryImage } = inputs;
+
+  const getCategory = async () => {
+    try {
+      if (categoryForm.show === "edit") {
+        const { data, error } = await supabase
+          .from("products_categories")
+          .select("id, category_name, category_image")
+          .eq("id", categoryForm.id);
+        setInputs({
+          categoryName: data.category_name,
+          categoryImage: data.category_image,
+        });
+        if (error) {
+          throw error;
+        }
+      }
+    } catch (error) {
+      console.error(error);
     }
-    return (
-        <>
-            <h1>{categoryForm === "add"? "NEW" : "EDIT"} CATEGORY</h1>
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Submit</button>
-            </form>
-        </>
-    )
+  };
+
+  useEffect(() => getCategory, []);
+
+  //Handle function for the inputs
+  const handleInput = (e) => {
+    const value = e.target.value.length > 0 ? e.target.value : null;
+    console.log("THIS IS THE INPUT VALUE: ", value);
+
+    setInputs({ ...inputs, [e.target.name]: value });
+    console.log("THIS IS INPUTS: ", { ...inputs, [e.target.name]: value });
+  };
+
+  const updateDatabase = async () => {
+    try {
+      if (categoryForm.show === "edit") {
+        const {data, error} = await supabase
+          .from("products_categories")
+          .update({
+            category_name: inputs.categoryName,
+            category_image: inputs.categoryImage,
+          })
+          .eq("id", categoryForm.id);
+          console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName );
+          
+          console.log("THIS IS THE RESPONSE FOR THE EDIT: ", data);
+
+          if (error) throw error;
+          
+      }
+      setCategoryForm({ ...categoryForm, show: "none" });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  //Handle function for the submit button
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateDatabase();
+  };
+  return (
+    <>
+      <h1>{categoryForm.show === "add" ? "NEW" : "EDIT"} CATEGORY</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="categoryName">Category name: </label>
+        <input
+          type="text"
+          name="categoryName"
+          value={categoryName}
+          onChange={handleInput}
+        />
+        <label htmlFor="categoryImage">Category image: </label>
+        <input
+          type="text"
+          name="categoryImage"
+          value={categoryImage}
+          onChange={handleInput}
+        />
+        <button type="submit">
+          {categoryForm.show === "add" ? "ADD" : "UPDATE"} CATEGORY
+        </button>
+      </form>
+    </>
+  );
 }
-export default CategoryForm
+export default CategoryForm;
