@@ -18,7 +18,7 @@ function SearchProviderWrapper(props) {
 			const { data, error } = await supabase
 				.from("products")
 				.select("*, products_categories(category_name)")
-				.textSearch("title_description", `${search}:*`);
+				.textSearch("title_description", `${search?search+":*":""}`);
 
 			if (error) {
 				throw error;
