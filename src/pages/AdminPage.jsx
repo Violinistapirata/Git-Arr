@@ -4,29 +4,12 @@ import Categories from "../components/Categories"
 import ProductForm from "../components/ProductForm"
 import CategoryForm from "../components/CategoryForm"
 import { useState } from "react"
-import supabase from "../supabase/config"
 
 
-function AdminPage() {
+function AdminPage({categories, getCategories}) {
   const [productForm, setProductForm] = useState({show:"none", id:""})
   const [categoryForm, setCategoryForm] = useState({show:"none", id:""})
-  const [categories, setCategories] = useState([]);
-
-  async function getCategories() {
-    try {
-      const { data, error } = await supabase
-        .from("products_categories")
-        .select("id, category_name, category_image")
-        .order("id", {ascending: true})
-      setCategories(data);
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+  
   return (
     <div>
         <h1>ADMIN PAGE</h1>
