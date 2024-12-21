@@ -12,7 +12,7 @@ import "./ProductsList.css"
 import supabase from "../supabase/config";
 /* ------------------------------------------------------- */
 
-function ProductsList() {
+function ProductsList({setProductForm}) {
 /*     const {productsList} = useContext(productsListContext) */
     const [products, setProducts] = useState([]);
     async function getProducts() {
@@ -38,7 +38,7 @@ useEffect(() => {
       <h1>Product List</h1>
       <section className="product-list">
         {products.map((product) => {
-          return <ProductCard key={product.id} product={product} getProducts={getProducts}/>;
+          return <ProductCard key={product.id} product={product} getProducts={getProducts} setProductForm={setProductForm}/>;
         })}
       </section>
     </>

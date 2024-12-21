@@ -13,7 +13,7 @@ function ProductCard({
     products_categories: { category_name },
   },
   getProducts,
-  setEditProductForm,
+  setProductForm,
 }) {
   const location = useLocation().pathname;
    const handleDelete =  async (e) => {
@@ -38,8 +38,7 @@ function ProductCard({
       </Link>
       {location === "/admin" && (
         <>
-          {/* <button onClick={setEditForm(true)}>Edit</button>  */}
-          <button>Edit</button>
+          <button onClick={() => setProductForm({"show":true,"id":id})} >Edit</button>
           <button onClick={(e) => handleDelete(e)}>
             <img
               src="../src/assets/trash-can.png"
