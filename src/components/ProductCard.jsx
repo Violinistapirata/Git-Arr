@@ -41,7 +41,7 @@ function ProductCard({
           <button onClick={() => setProductForm({"show":true,"id":id})} >Edit</button>
           <button onClick={(e) => handleDelete(e)}>
             <img
-              src="../src/assets/trash-can.png"
+              src="../src/assets/trash-ca.png"
               alt="delete"
               className="delete-button"
             />

@@ -5,9 +5,9 @@ function CategoryForm({categoryForm, setCategoryForm}) {
     }
     return (
         <>
-            <h1>{categoryForm === "add"? "NEW" : "EDIT"}CATEGORY</h1>
+            <h1>{categoryForm === "add"? "NEW" : "EDIT"} CATEGORY</h1>
             <form onSubmit={handleSubmit}>
-                <button type="submit"></button>
+                <button type="submit">Submit</button>
             </form>
         </>
     )
