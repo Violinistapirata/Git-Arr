@@ -10,14 +10,15 @@ function SearchProviderWrapper(props) {
 	const [searchResult, setSearchResult] = useState([]);
 
 	//
-
-	const getSearchProducts = async () => {
+  // Supabase Full Text Search https://supabase.com/docs/guides/database/full-text-search
+	// title_description is a function in the products table concatenating the title and description
+  const getSearchProducts = async () => {
 		try {
 			
 			const { data, error } = await supabase
 				.from("products")
 				.select("*, products_categories(category_name)")
-				.textSearch("title_description", `${search}`);
+				.textSearch("title_description", `${search}:*`);
 
 			if (error) {
 				throw error;
