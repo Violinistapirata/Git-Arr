@@ -12,7 +12,7 @@ import "./Categories.css";
 
 /* ----------------------------------------------- */
 
-function Categories(setEditCategoryForm) {
+function Categories({setCategoryForm}) {
   const [categories, setCategories] = useState([]);
   const location = useLocation().pathname;
 
@@ -68,8 +68,7 @@ function Categories(setEditCategoryForm) {
                 </Link>
                 {location === "/admin" && (
                   <>
-                    {/* <button onClick={setEditForm(true)}>Edit</button>  */}
-                    <button>Edit</button>
+                    <button onClick={setCategoryForm({"show":true,"id":category.id})}>Edit</button>
                     <button onClick={(e) => handleDelete(e)}>
                       <img
                         src="../src/assets/trash-can.png"
