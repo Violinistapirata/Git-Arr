@@ -5,30 +5,15 @@ import supabase from "../supabase/config";
 import { Link, useLocation } from "react-router-dom";
 
 //HOOKS
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 //STYLES
 import "./Categories.css";
 
 /* ----------------------------------------------- */
 
-function Categories({setCategoryForm}) {
-  const [categories, setCategories] = useState([]);
+function Categories({categories, getCategories, setCategoryForm}) {
   const location = useLocation().pathname;
-
-  async function getCategories() {
-    try {
-      const { data, error } = await supabase
-        .from("products_categories")
-        .select("id, category_name, category_image");
-      setCategories(data);
-      if (error) {
-        throw error;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   useEffect(() => {
     getCategories();
@@ -68,10 +53,10 @@ function Categories({setCategoryForm}) {
                 </Link>
                 {location === "/admin" && (
                   <>
-                    <button onClick={() => setCategoryForm({"show":true,"id":category.id})}>Edit</button>
+                    <button onClick={() => setCategoryForm({show: "edit", id: category.id})}>Edit</button>
                     <button onClick={(e) => handleDelete(e)}>
                       <img
-                        src="../src/assets/trash-can.png"
+                        src="../src/assets/trash-ca.png"
                         alt="delete"
                         className="delete-button"
                       />
