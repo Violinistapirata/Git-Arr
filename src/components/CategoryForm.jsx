@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 /* ----------------------------------------------- */
 
-function CategoryForm({ categoryForm, setCategoryForm }) {
+function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
   //State for the input values
   const [inputs, setInputs] = useState({
     categoryName: "",
@@ -55,6 +55,7 @@ function CategoryForm({ categoryForm, setCategoryForm }) {
             category_image: inputs.categoryImage,
           })
           .eq("id", categoryForm.id);
+          getCategories();
           console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName );
           
           console.log("THIS IS THE RESPONSE FOR THE EDIT: ", data);
