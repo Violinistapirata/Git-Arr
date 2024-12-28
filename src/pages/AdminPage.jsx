@@ -14,7 +14,7 @@ function AdminPage({categories, getCategories}) {
     <div>
         <h1>ADMIN PAGE</h1>
         <section>
-            <ProductsList setProductForm={setProductForm}/>
+            <ProductsList setProductForm={setProductForm} productForm={productForm}/>
         </section>
         <section>
             <Categories categories={categories} getCategories={getCategories} setCategoryForm={setCategoryForm}/>
@@ -24,6 +24,7 @@ function AdminPage({categories, getCategories}) {
           {(productForm.show === "add" || productForm.show === "edit") && <ProductForm productForm={productForm} setProductForm={setProductForm} /> }
           {(categoryForm.show === "add" || categoryForm.show === "edit") && <CategoryForm getCategories={getCategories} categoryForm={categoryForm} setCategoryForm={setCategoryForm} /> }
         </section>
+        <button onClick={() => setProductForm({show:"add",id:""})} >Add product</button>
     </div>
   )
 }
