@@ -73,7 +73,7 @@ function ProductForm({ productForm, setProductForm }) {
         .update(object)
         .eq("id", id)
         .select();
-		setProductForm({show:"none",id:""})
+      setProductForm({ show: "none", id: "" });
       if (error) {
         throw error;
       }
@@ -89,7 +89,7 @@ function ProductForm({ productForm, setProductForm }) {
         .from("products")
         .insert(object)
         .select();
-		setProductForm({show:"none",id:""})
+      setProductForm({ show: "none", id: "" });
       if (error) {
         throw error;
       }
@@ -149,101 +149,128 @@ const { data, error } = await supabase
     <>
       <div className="product-form-overlay">
         <div className="product-form">
+          <span
+            className="product-form-close-button"
+            onClick={(e) => setProductForm({ show: "none", id: "" })}
+          >
+            &times;
+          </span>
+          <h3>
+            {productForm.show === "add"
+              ? "Add a new product"
+              : "Edit product " + form.title}
+          </h3>
           <form onSubmit={handleSubmit}>
-            <span>Edit</span>
             {form.id && <input value={form.id} name="id" type="hidden" />}
-            <div>
-              <label>
-                Title
-                <input
-                  value={form.title}
-                  onChange={handleInput}
-                  name="title"
-                  type="text"
-                  placeholder="Product name"
-                  required
-                />
-              </label>
-              <label htmlFor="">
-                Category
-                <select
-                  onChange={handleInput}
-                  name="category"
-                  value={form.category}
-                  required
-                >
-                  <option value="">--Choose a category--</option>
-                  {categories.map((category, index) => {
-                    return (
-                      <option key={category.id} value={category.id}>
-                        {category.category_name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </label>
-              <label>
-                Image
-                <input
-                  value={form.image}
-                  onChange={handleInput}
-                  name="image"
-                  type="text"
-                  placeholder="Product image url"
-                />
-              </label>
-              <label>
-                Description
-                <textarea
-                  value={form.description}
-                  onChange={handleInput}
-                  name="description"
-                  type="text"
-                  placeholder="Product description"
-                  rows="5"
-                />
-              </label>
-              <label>
-                Price €
-                <input
-                  value={form.price}
-                  onChange={handleInput}
-                  name="price"
-                  type="number"
-                  placeholder="Product price"
-                  min={1}
-                  required
-				  step="0.01"
-                />
-              </label>
-              <label>
-                Stock
-                <input
-                  value={form.stock}
-                  onChange={handleInput}
-                  name="stock"
-                  type="number"
-                  placeholder="Products in stock"
-                />
-              </label>
-
+            <section>
               {/* 
-                
-
-			price: form.price,
-			stock: form.stock,
-			featured: form.featured,
-
-                 */}
-
+				
+				<div class="nice-form-group">
+            		<label>Basic form group</label>
+            		<small>With additional information below the label</small>
+            		<input type="text" placeholder="Your name" />
+          		</div>
+				
+				*/}
+              <div>
+                <label htmlFor="image">
+                  Image
+                  <img src={form.image} className="product-form-image" />
+                  <input
+                    value={form.image}
+                    onChange={handleInput}
+                    name="image"
+                    id="image"
+                    type="hidden"
+                  />
+                  <ProductImageUpload
+                    form={form}
+                    setForm={setForm}
+                    imageName={form.title}
+                  />
+                </label>
+              </div>
+            </section>
+            <section>
+              <div>
+                <label>
+                  Title
+                  <input
+                    value={form.title}
+                    onChange={handleInput}
+                    name="title"
+                    type="text"
+                    placeholder="Product name"
+                    required
+                  />
+                </label>
+              </div>
+              <div>
+                <label htmlFor="category">
+                  Category
+                  <select
+                    onChange={handleInput}
+                    name="category"
+                    id="category"
+                    value={form.category}
+                    required
+                  >
+                    <option value="">--Choose a category--</option>
+                    {categories.map((category, index) => {
+                      return (
+                        <option key={category.id} value={category.id}>
+                          {category.category_name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label>
+                  Description
+                  <textarea
+                    value={form.description}
+                    onChange={handleInput}
+                    name="description"
+                    type="text"
+                    placeholder="Product description"
+                    rows="5"
+                  />
+                </label>
+              </div>
+              <div>
+                <label>
+                  Price €
+                  <input
+                    value={form.price}
+                    onChange={handleInput}
+                    name="price"
+                    type="number"
+                    placeholder="Product price"
+                    min={1}
+                    required
+                    step="0.01"
+                  />
+                </label>
+              </div>
+              <div>
+                <label>
+                  Stock
+                  <input
+                    value={form.stock}
+                    onChange={handleInput}
+                    name="stock"
+                    type="number"
+                    placeholder="Products in stock"
+                  />
+                </label>
+              </div>
+            </section>
+            <section>
               <button type="submit">Save</button>
-            </div>
+            </section>
           </form>
-          <ProductImageUpload
-            form={form}
-            setForm={setForm}
-            imageName={form.title}
-          />
         </div>
       </div>
     </>
