@@ -1,19 +1,21 @@
 .product-form-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 .product-form {
-    position: absolute;
-    z-index: 101;
-    background: #fff;
+  background-color: #ffff;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+.product-form-image {
+  height: 300px;
+  width: auto;
 }

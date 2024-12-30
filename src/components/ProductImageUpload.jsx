@@ -42,14 +42,13 @@ function ProductImageUpload({ imageName, form, setForm }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Upload image</p>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+    <div>
+      <input  type="file" onChange={(e) => setFile(e.target.files[0])} />
 
-      <button type="submit" disabled={!file}>
-        Upload File
+      <button onClick={handleSubmit} disabled={!file} >
+        Change image
       </button>
-    </form>
+      </div>
   );
 }
 
