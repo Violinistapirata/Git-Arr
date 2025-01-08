@@ -20,6 +20,7 @@ function ProductsList({productForm,setProductForm}) {
         const { data, error } = await supabase
           .from("products")
           .select("*, products_categories(category_name)")
+          .order("title",{ascending: true})
         setProducts(data);
         console.log("THIS IS PRODUCT", data);
         
@@ -35,7 +36,6 @@ useEffect(() => {
 }, [productForm])
   return (
     <>
-      <h1>Product List</h1>
       <section className="product-list">
         {products.map((product) => {
           return <ProductCard key={product.id} product={product} getProducts={getProducts} setProductForm={setProductForm}/>;
