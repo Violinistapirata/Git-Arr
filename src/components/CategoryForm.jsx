@@ -4,13 +4,22 @@ import supabase from "../supabase/config";
 //HOOKS
 import { useEffect, useState } from "react";
 
+//COMPONENTS
+import ProductImageUpload from "./ProductImageUpload";
+
 /* ----------------------------------------------- */
 
 function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
+  const categoryColumns = {
+    title: "",
+    image: ""
+  };
+
+  const [form, setForm] = useState(categoryColumns);
   //State for the input values
   const [inputs, setInputs] = useState({
     categoryName: "",
-    categoryImage: "",
+    categoryImage: ""
   });
   const { categoryName, categoryImage } = inputs;
 
@@ -98,12 +107,19 @@ function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
           onChange={handleInput}
         />
         <label htmlFor="categoryImage">Category image: </label>
+        <img src={form.image} className="product-form-image" />
         <input
           type="text"
           name="categoryImage"
+          id="image"
           value={categoryImage}
           onChange={handleInput}
         />
+        <ProductImageUpload
+                    form={form}
+                    setForm={setForm}
+                    imageName={form.title}
+                  />
         <button type="submit">
           {categoryForm.show === "add" ? "ADD" : "UPDATE"} CATEGORY
         </button>

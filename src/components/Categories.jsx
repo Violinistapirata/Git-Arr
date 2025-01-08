@@ -7,9 +7,6 @@ import { Link, useLocation } from "react-router-dom";
 //HOOKS
 import { useEffect } from "react";
 
-//COMPONENTS
-import ProductImageUpload from "./ProductImageUpload";
-
 //STYLES
 import "./Categories.css";
 
@@ -47,7 +44,7 @@ function Categories({categories, getCategories, setCategoryForm}) {
                 <Link to={`/category/${category.id}`}>
                   <div>
                     <img
-                      src="../src/assets/guitar-images/mock-category-icon.png" /*{category.category_image}*/
+                      src= /*"../src/assets/guitar-images/mock-category-icon.png"*/ {category.category_image}
                       alt={category.category_name}
                     />
                     <b>{category.category_name}</b>
@@ -58,7 +55,7 @@ function Categories({categories, getCategories, setCategoryForm}) {
                     <button onClick={() => setCategoryForm({show: "edit", id: category.id})}>Edit</button>
                     <button onClick={(e) => handleDelete(e)}>
                       <img
-                        src="../src/assets/trash-ca.png"
+                        src="../src/assets/trash-can.png"
                         alt="delete"
                         className="delete-button"
                       />
