@@ -28,7 +28,7 @@ function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
         if (error) {
           throw error;
         }
-      }
+      } 
     } catch (error) {
       console.error(error);
     }
@@ -62,6 +62,19 @@ function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
 
           if (error) throw error;
           
+      } else if (categoryForm.show === "add") {
+        const {data, error} = await supabase
+          .from("products_categories")
+          .insert([
+            { category_name: inputs.categoryName,
+              category_image: inputs.categoryImage, },
+          ])
+          getCategories();
+          console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName );
+          
+          console.log("THIS IS THE RESPONSE FOR THE ADD CATEGORY: ", data);
+
+          if (error) throw error;
       }
       setCategoryForm({ ...categoryForm, show: "none" });
     } catch (error) {

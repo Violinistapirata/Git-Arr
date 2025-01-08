@@ -7,6 +7,9 @@ import { Link, useLocation } from "react-router-dom";
 //HOOKS
 import { useEffect } from "react";
 
+//COMPONENTS
+import ProductImageUpload from "./ProductImageUpload";
+
 //STYLES
 import "./Categories.css";
 

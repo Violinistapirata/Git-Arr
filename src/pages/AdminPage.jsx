@@ -31,7 +31,7 @@ function AdminPage({ categories, getCategories }) {
           getCategories={getCategories}
           setCategoryForm={setCategoryForm}
         />
-        <button onClick={() => setProductForm({ show: "add", id: "" })}>
+        <button onClick={() => setCategoryForm({ show: "add", id: "" })}>
           Add category
         </button>
       </section>
