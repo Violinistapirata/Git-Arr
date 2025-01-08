@@ -1,0 +1,51 @@
+.admin-page {
+	> section {
+		margin: 40px 0;
+	}
+	h1,
+	h2 {
+		padding: 16px;
+		padding-top: 30px;
+		padding-left: 34px;
+	}
+	section h2 {
+		padding-top: 0;
+	}
+	.product-list {
+		margin-top: 0;
+	}
+	.product-card {
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: 5px;
+		&:hover {
+			transform: none;
+		}
+	}
+	button {
+		background-color: #484848;
+		color: #fff;
+		font-size: 1rem;
+		padding: 7px 13px;
+		border: none;
+		border-radius: 5px;
+		margin-top: 20px;
+		cursor: pointer;
+		&:hover {
+			background-color: #ffa006;
+		}
+	}
+    button.delete-button {
+        background-color: rgb(155, 0, 0);
+    }
+	.admin-buttons {
+		display: flex;
+		justify-content: space-between;
+	}
+	.categories-wrapper {
+		margin-top: 0;
+		background: #fff;
+	}
+}

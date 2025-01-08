@@ -1,22 +1,23 @@
 //COMPONENTS
-import ProductsList from "../components/ProductsList";
-import Categories from "../components/Categories";
-import ProductForm from "../components/ProductForm";
-import CategoryForm from "../components/CategoryForm";
+import ProductsList from "../components/ProductsList"
+import Categories from "../components/Categories"
+import ProductForm from "../components/ProductForm"
+import CategoryForm from "../components/CategoryForm"
+import { useState } from "react"
 
-//HOOKS
-import { useState } from "react";
+//CSS
+import "./AdminPage.css"
 
-/* ----------------------------------------------- */
 
-function AdminPage({ categories, getCategories }) {
-  const [productForm, setProductForm] = useState({ show: "none", id: "" });
-  const [categoryForm, setCategoryForm] = useState({ show: "none", id: "" });
-
+function AdminPage({categories, getCategories}) {
+  const [productForm, setProductForm] = useState({show:"none", id:""})
+  const [categoryForm, setCategoryForm] = useState({show:"none", id:""})
+  
   return (
-    <div>
+    <div className="admin-page">
       <h1>ADMIN PAGE</h1>
       <section>
+        <h2>Products</h2>
         <ProductsList
           setProductForm={setProductForm}
           productForm={productForm}
@@ -26,6 +27,7 @@ function AdminPage({ categories, getCategories }) {
         </button>
       </section>
       <section>
+        <h2>Categories</h2>
         <Categories
           categories={categories}
           getCategories={getCategories}
