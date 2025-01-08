@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { cartContext } from "../Contexts/cart.context";
 
-import '../pages/ProductDetailsPage.css'
+import "../pages/ProductDetailsPage.css";
 /* ----------------------------------------------- */
 
 function ProductDetailsPage() {
@@ -42,16 +42,15 @@ function ProductDetailsPage() {
 
   return (
     <>
-        <article className="product-details-card">
-          <img src={image} alt="guitar image" />
+      <article className="product-details-card">
+        <img src={image} alt="guitar image" />
+        <div>
           <h1>{title}</h1>
           <p>{description}</p>
           {featured && <span>{"⭐"}</span>}
           <h4>{products_categories?.category_name}</h4>
           <h4>{price}€</h4>
-          <h2>
-            {stock > 0 ? `IN STOCK: ${stock}` : "OUT OF STOCK"}
-          </h2>
+          <h2>{stock > 0 ? `IN STOCK: ${stock}` : "OUT OF STOCK"}</h2>
           <button
             className="add-to-cart-button"
             onClick={() => {
@@ -59,8 +58,9 @@ function ProductDetailsPage() {
             }}
           >
             Add to cart
-          </button> 
-        </article>
+          </button>
+        </div>
+      </article>
     </>
   );
 }

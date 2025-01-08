@@ -1,75 +1,78 @@
 .nav {
-	background-color: #ffffff;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
-	padding: 0.5rem;
-	a {
-		text-decoration: none;
-		color: #000000;
-	}
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
+  padding: 0.5rem;
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
 }
 
 .nav-left {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-	width: 120px;
-	margin-right: 1rem;
-	cursor: pointer;
+  width: 120px;
+  margin-right: 1rem;
+  cursor: pointer;
 }
 
 .brand-name {
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: #000000;
-	margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  margin: 0;
 }
 
 .brand-name:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .nav-right {
-	cursor: pointer;
-	margin-right: 3rem;
+  cursor: pointer;
+  margin-right: 3rem;
 }
 
 .cart-inline {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .cart {
-	width: 30px;
+  width: 30px;
 }
 
 .categories {
-	height: 3rem;
-	background-color: #000000;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
-	color: #ffffff;
+  height: 3rem;
+  background-color: #000000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.454);
 }
 
 .category-list {
-	display: flex;
-	justify-content: space-around;
-	list-style: none;
-	align-self: center;
-	align-items: center;
-	align-content: center;
-	text-align: center;
-	height: 100%;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  height: 100%;
 }
 
-.list:hover {
-	background-color: #ffa006;
-	border-radius: 5px;
-	padding: 12px 12px;
-	cursor: pointer;
+.cat-li {
+  color: white;
+}
+
+.cat-li:hover {
+  background-color: #ffa006;
+  border-radius: 5px;
+  padding: 12px 12px;
+  cursor: pointer;
 }

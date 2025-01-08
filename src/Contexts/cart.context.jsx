@@ -4,9 +4,18 @@ import supabase from "../supabase/config";
 
 const cartContext = createContext();
 
+const getPrice = (cart) => {
+  let total = 0;
+  for (let i = 0; i < cart.length; i++) {
+    total += cart[i].price * cart[i].quantity;
+  }
+
+  return total;
+};
+
 function CartProvider(props) {
   const [cart, setCart] = useState([]);
-
+  const totalPrice = getPrice(cart);
   const loadCart = async () => {
     try {
       // Obtengo cart table con supabase
@@ -80,10 +89,45 @@ function CartProvider(props) {
     }
   };
 
-  // supabase elimina el item del cart buscandolo por id
-  const deleteItem = async (itemId) => {
-    const { error } = await supabase.from("cart").delete().eq("id", itemId);
-    console.log({ error });
+  // supabase elimina el item del cart buscandolo por id actualizando el arreglo del carrito entero
+  const deleteItem = async (item) => {
+    const newCart = cart.filter((cartItem) => cartItem.id !== item.id);
+
+    const productsFromObjectToString = newCart.map((cartItem) => cartItem.id);
+    const { error } = await supabase
+      .from("cart")
+      .update([{ product_ids: productsFromObjectToString }])
+      .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f");
+
+    if (error) {
+      console.log(error);
+    }
+
+    console.log({ productsFromObjectToString, newCart, cart, item });
+    setCart(newCart);
+  };
+
+  const updateItem = async (item) => {
+    let supabaseCart = [];
+    const newCart = cart.map((cartItem) => {
+      if (cartItem.id === item.id) {
+        return item;
+      }
+      return cartItem;
+    });
+
+    newCart.forEach((newCartItem) => {
+      const newQuantity = new Array(newCartItem.quantity).fill(newCartItem.id);
+      supabaseCart = [...supabaseCart, ...newQuantity];
+    });
+
+    console.log({ supabaseCart });
+    const { error } = await supabase
+      .from("cart")
+      .update([{ product_ids: supabaseCart }])
+      .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f");
+
+    setCart(newCart);
   };
 
   useEffect(() => {
@@ -91,7 +135,9 @@ function CartProvider(props) {
   }, []);
 
   return (
-    <cartContext.Provider value={{ cart, addItem, deleteItem }}>
+    <cartContext.Provider
+      value={{ cart, addItem, deleteItem, updateItem, totalPrice }}
+    >
       {props.children}
     </cartContext.Provider>
   );

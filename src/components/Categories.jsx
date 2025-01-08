@@ -21,7 +21,6 @@ function Categories({categories, getCategories, setCategoryForm}) {
   console.log("THIS IS CATEGORIES: ", categories);
   return (
     <section>
-      <h1>Categories</h1>
       <div className="categories-wrapper">
         {categories ? (
           categories.map((category) => {

@@ -65,7 +65,7 @@ function NavBar() {
 						categories.map((category) => {
 							return (
 								<Link to={`/category/${category.id}`} key={category.id}>
-									<li className="list">{category.category_name}</li>
+									<li className="cat-li">{category.category_name}</li>
 								</Link>
 							);
 						})
