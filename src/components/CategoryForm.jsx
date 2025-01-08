@@ -7,19 +7,22 @@ import { useEffect, useState } from "react";
 //COMPONENTS
 import ProductImageUpload from "./ProductImageUpload";
 
+//STYLES
+import "./ProductForm.css"
+
 /* ----------------------------------------------- */
 
-function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
+function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
   const categoryColumns = {
     title: "",
-    image: ""
+    image: "",
   };
 
   const [form, setForm] = useState(categoryColumns);
   //State for the input values
   const [inputs, setInputs] = useState({
     categoryName: "",
-    categoryImage: ""
+    categoryImage: "",
   });
   const { categoryName, categoryImage } = inputs;
 
@@ -37,7 +40,7 @@ function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
         if (error) {
           throw error;
         }
-      } 
+      }
     } catch (error) {
       console.error(error);
     }
@@ -57,33 +60,34 @@ function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
   const updateDatabase = async () => {
     try {
       if (categoryForm.show === "edit") {
-        const {data, error} = await supabase
+        const { data, error } = await supabase
           .from("products_categories")
           .update({
             category_name: inputs.categoryName,
             category_image: inputs.categoryImage,
           })
           .eq("id", categoryForm.id);
-          getCategories();
-          console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName );
-          
-          console.log("THIS IS THE RESPONSE FOR THE EDIT: ", data);
+        getCategories();
+        console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName);
 
-          if (error) throw error;
-          
+        console.log("THIS IS THE RESPONSE FOR THE EDIT: ", data);
+
+        if (error) throw error;
       } else if (categoryForm.show === "add") {
-        const {data, error} = await supabase
+        const { data, error } = await supabase
           .from("products_categories")
           .insert([
-            { category_name: inputs.categoryName,
-              category_image: inputs.categoryImage, },
-          ])
-          getCategories();
-          console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName );
-          
-          console.log("THIS IS THE RESPONSE FOR THE ADD CATEGORY: ", data);
+            {
+              category_name: inputs.categoryName,
+              category_image: inputs.categoryImage,
+            },
+          ]);
+        getCategories();
+        console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName);
 
-          if (error) throw error;
+        console.log("THIS IS THE RESPONSE FOR THE ADD CATEGORY: ", data);
+
+        if (error) throw error;
       }
       setCategoryForm({ ...categoryForm, show: "none" });
     } catch (error) {
@@ -97,33 +101,43 @@ function CategoryForm({getCategories, categoryForm, setCategoryForm }) {
   };
   return (
     <>
-      <h1>{categoryForm.show === "add" ? "NEW" : "EDIT"} CATEGORY</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="categoryName">Category name: </label>
-        <input
-          type="text"
-          name="categoryName"
-          value={categoryName}
-          onChange={handleInput}
-        />
-        <label htmlFor="categoryImage">Category image: </label>
-        <img src={form.image} className="product-form-image" />
-        <input
-          type="text"
-          name="categoryImage"
-          id="image"
-          value={categoryImage}
-          onChange={handleInput}
-        />
-        <ProductImageUpload
-                    form={form}
-                    setForm={setForm}
-                    imageName={form.title}
-                  />
-        <button type="submit">
-          {categoryForm.show === "add" ? "ADD" : "UPDATE"} CATEGORY
-        </button>
-      </form>
+      <div className="product-form-overlay">
+        <div className="product-form">
+          <span
+            className="product-form-close-button"
+            onClick={(e) => setCategoryForm({ show: "none", id: "" })}
+          >
+            &times;
+          </span>
+          <h1>{categoryForm.show === "add" ? "NEW" : "EDIT"} CATEGORY</h1>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="categoryName">Category name: </label>
+            <input
+              type="text"
+              name="categoryName"
+              value={categoryName}
+              onChange={handleInput}
+            />
+            <label htmlFor="categoryImage">Category image: </label>
+            <img src={form.image} className="product-form-image" />
+            <input
+              type="text"
+              name="categoryImage"
+              id="image"
+              value={categoryImage}
+              onChange={handleInput}
+            />
+            <ProductImageUpload
+              form={form}
+              setForm={setForm}
+              imageName={form.title}
+            />
+            <button type="submit">
+              {categoryForm.show === "add" ? "ADD" : "UPDATE"} CATEGORY
+            </button>
+          </form>
+        </div>
+      </div>
     </>
   );
 }
