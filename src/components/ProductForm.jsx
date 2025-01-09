@@ -9,9 +9,6 @@ import ProductImageUpload from "./ProductImageUpload";
 import "./ProductForm.css";
 
 function ProductForm({ productForm, setProductForm }) {
-	console.log("productForm show:", productForm.show);
-	console.log("productForm id:", productForm.id);
-
 	const productColumns = {
 		title: "",
 		category: "",
@@ -24,7 +21,7 @@ function ProductForm({ productForm, setProductForm }) {
 
 	const [form, setForm] = useState(productColumns);
 	const [categories, setCategories] = useState([]);
-	console.log("setForm form:", form);
+
 	const getCategories = async () => {
 		try {
 			const { data, error } = await supabase
@@ -34,7 +31,9 @@ function ProductForm({ productForm, setProductForm }) {
 				throw error;
 			}
 			setCategories(data);
-		} catch (error) {}
+		} catch (error) {
+			console.error(error);
+		}
 	};
 	const getProduct = async (id) => {
 		try {
@@ -42,8 +41,6 @@ function ProductForm({ productForm, setProductForm }) {
 				.from("products")
 				.select("*")
 				.eq("id", `${id}`);
-
-			//console.log("product from db", data);
 
 			setForm({
 				id: data[0].id,
@@ -66,9 +63,7 @@ function ProductForm({ productForm, setProductForm }) {
 
 	const updateProduct = async (id, object) => {
 		try {
-			console.log(object);
-
-			const { data, error } = await supabase
+			const { error } = await supabase
 				.from("products")
 				.update(object)
 				.eq("id", id)
@@ -83,12 +78,7 @@ function ProductForm({ productForm, setProductForm }) {
 	};
 	const addProduct = async (object) => {
 		try {
-			console.log(object);
-
-			const { data, error } = await supabase
-				.from("products")
-				.insert(object)
-				.select();
+			const { error } = await supabase.from("products").insert(object).select();
 			setProductForm({ show: "none", id: "" });
 			if (error) {
 				throw error;
@@ -106,7 +96,6 @@ function ProductForm({ productForm, setProductForm }) {
 		});
 	};
 
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const editProduct = {
@@ -118,28 +107,20 @@ function ProductForm({ productForm, setProductForm }) {
 			stock: form.stock,
 			featured: form.featured,
 		};
-		console.log("editProduct object", editProduct);
 		if (productForm.show === "edit") {
 			updateProduct(form.id, editProduct);
 		}
 		if (productForm.show === "add") {
 			addProduct(editProduct);
 		}
-		//props.handleAddStudent(newStudent);
 	};
 
 	useEffect(() => {
 		getCategories();
 		if (productForm.show === "edit") {
 			getProduct(productForm.id);
-			console.log("useEffect === edit");
-		}
-		if (productForm.show === "add") {
 		}
 	}, [productForm.id]);
-
-  console.log(form.featured);
-  
 
 	return (
 		<>
@@ -159,15 +140,6 @@ function ProductForm({ productForm, setProductForm }) {
 					<form onSubmit={handleSubmit}>
 						{form.id && <input value={form.id} name="id" type="hidden" />}
 						<section>
-							{/* 
-				
-				<div class="nice-form-group">
-            		<label>Basic form group</label>
-            		<small>With additional information below the label</small>
-            		<input type="text" placeholder="Your name" />
-          		</div>
-				
-				*/}
 							<div className="edit-image">
 								<div className="product-form-image">
 									{form.image ? <img src={form.image} /> : <p>Add an image</p>}
@@ -211,7 +183,7 @@ function ProductForm({ productForm, setProductForm }) {
 									required
 								>
 									<option value="">--Choose a category--</option>
-									{categories.map((category, index) => {
+									{categories.map((category) => {
 										return (
 											<option key={category.id} value={category.id}>
 												{category.category_name}
@@ -261,14 +233,13 @@ function ProductForm({ productForm, setProductForm }) {
 								<label htmlFor="featured">Featured</label>
 								<input
 									value={!form.featured}
-                  onChange={handleInput}
-                  checked={form.featured}
+									onChange={handleInput}
+									checked={form.featured}
 									name="featured"
 									id="featured"
 									type="checkbox"
 								/>
 							</div>
-
 						</section>
 						<section>
 							<button type="submit">Save</button>
