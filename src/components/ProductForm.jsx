@@ -43,7 +43,7 @@ function ProductForm({ productForm, setProductForm }) {
 				.select("*")
 				.eq("id", `${id}`);
 
-			console.log("product from db", data);
+			//console.log("product from db", data);
 
 			setForm({
 				id: data[0].id,
@@ -106,13 +106,6 @@ function ProductForm({ productForm, setProductForm }) {
 		});
 	};
 
-	/* 
-const { data, error } = await supabase
-  .from('products')
-  .update({ other_column: 'otherValue' })
-  .eq('some_column', 'someValue')
-  .select()
-*/
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -144,6 +137,9 @@ const { data, error } = await supabase
 		if (productForm.show === "add") {
 		}
 	}, [productForm.id]);
+
+  console.log(form.featured);
+  
 
 	return (
 		<>
@@ -261,6 +257,18 @@ const { data, error } = await supabase
 									placeholder="Products in stock"
 								/>
 							</div>
+							<div className="form-group">
+								<label htmlFor="featured">Featured</label>
+								<input
+									value={!form.featured}
+                  onChange={handleInput}
+                  checked={form.featured}
+									name="featured"
+									id="featured"
+									type="checkbox"
+								/>
+							</div>
+
 						</section>
 						<section>
 							<button type="submit">Save</button>
