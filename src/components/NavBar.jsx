@@ -55,7 +55,7 @@ function NavBar() {
 				<div className="nav-right">
 					<Link to="/cart" className="cart-inline" >
 						<img className="cart" src={cartLogo} alt="Cart" />
-						<p>{cartCount}</p>
+						<p className="cart-counter">{cartCount}</p>
 					</Link>
 				</div>
 			</nav>

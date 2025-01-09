@@ -1,52 +1,69 @@
 .product-details-card {
   margin: 40px auto;
+  margin-top: 70px;
   padding: 20px;
-  background-color: #ffffff;
   display: flex;
-  flex-direction: row; 
-  align-items: flex-start;
   justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
   max-width: 1200px;
-  gap: 20px; 
-
-
+  gap: 40px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
 }
+
+.product-details-card-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+}
+
 .product-details-card img {
-  width: 70%;
-  max-height: 500px;
-  border-radius: 10px;
+  width: 80%;
+  max-height: 550px;
+  object-fit: contain;
+  margin-left: 0;
+  align-self: flex-start;
 }
 
-.product-details-card h1 {
+.product-details-title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
-.product-details-card p {
+.product-details-description {
   font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
+  color: #656565;
+  margin-bottom: 40px;
   line-height: 1.6;
 }
 
-.product-details-card h4 {
+.product-details-price {
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: #000000;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.product-details-categories {
   font-size: 1.2rem;
   font-weight: normal;
   color: #555;
   margin-bottom: 10px;
 }
 
-.product-details-card h2 {
+.product-details-stock {
   font-size: 1.2rem;
   color: green;
   margin-bottom: 20px;
 }
-
-.product-details-card h2.out-of-stock {
+.product-details-stock.out-of-stock {
   color: red;
 }
-
 .add-to-cart-button {
   background-color: #484848;
   color: #fff;
@@ -55,10 +72,9 @@
   border: none;
   border-radius: 5px;
   margin-top: 20px;
-  align-self: flex-start; 
+  align-self: flex-start;
 }
 
-.add-to-cart-button:hover{
+.add-to-cart-button:hover {
   background-color: #ffa006;
 }
-

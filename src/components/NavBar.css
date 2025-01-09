@@ -76,3 +76,28 @@
   padding: 12px 12px;
   cursor: pointer;
 }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+  position: relative;
+}
+
+
+.cart-counter{
+  background-color: #ffa006; /* Fondo resaltado */
+  color: white; /* Texto blanco */
+  border-radius: 50%; /* Forma circular */
+  padding: 5px 10px; /* Espaciado interno */
+  font-size: 0.9rem; /* Tamaño del texto */
+  position: absolute;
+  top: -14px;
+  right: -22px; /* Ajuste horizontal */
+}
+
+.cart-counter:hover  {
+  background-color: #333; /* Cambia fondo al pasar el mouse */
+  color: #ffa006; /* Cambia el color del texto */
+}

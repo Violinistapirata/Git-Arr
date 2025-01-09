@@ -44,13 +44,22 @@ function ProductDetailsPage() {
     <>
       <article className="product-details-card">
         <img src={image} alt="guitar image" />
-        <div>
-          <h1>{title}</h1>
-          <p>{description}</p>
+        <div className="product-details-card-container">
+          <h1 className="product-details-title">{title}</h1>
+          <p className="product-details-description">{description}</p>
           {featured && <span>{"⭐"}</span>}
-          <h4>{products_categories?.category_name}</h4>
-          <h4>{price}€</h4>
-          <h2>{stock > 0 ? `IN STOCK: ${stock}` : "OUT OF STOCK"}</h2>
+          <h4 className="product-details-categories">
+            {products_categories?.category_name}
+          </h4>
+          <h4 className="product-details-price">{price}€</h4>
+          <h2
+            className={`product-details-stock ${
+              stock > 0 ? "" : "out-of-stock"
+            }`}
+          >
+            {stock > 0 ? `IN STOCK: ${stock}` : "OUT OF STOCK"}
+          </h2>
+
           <button
             className="add-to-cart-button"
             onClick={() => {

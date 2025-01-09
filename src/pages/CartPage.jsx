@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { cartContext } from "../Contexts/cart.context";
 import deleteLogo from "../assets/delete.svg";
+import emptyCartIcon from "../assets/SadFace.svg";
 import "./CartPage.css";
 
 function CartPage() {
@@ -49,9 +50,12 @@ function CartPage() {
           </li>
         ))}
         {cart && cart.length > 0 ? (
-          <p>Total price: {totalPrice}</p>
+          <p className="total-price">Total price: {totalPrice}€ </p>
         ) : (
-          <p className="cart-empty-message">Your cart is empty!</p>
+          <p className="cart-empty-message">
+            <img className="empty-cart-icon" src={emptyCartIcon}/>
+            Your cart is empty!</p>
+
         )}
       </ul>
     </div>
