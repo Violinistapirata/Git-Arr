@@ -33,10 +33,16 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
           .from("products_categories")
           .select("id, category_name, category_image")
           .eq("id", categoryForm.id);
-        setInputs({
+          setForm({
+            title: data[0].category_name,
+          image: data[0].category_image
+          })
+          console.log("THIS IS FORM.TITLE: ", data[0].category_name, "THIS IS FORM.IMAGE: ", data[0].category_image);
+          
+        /* setInputs({
           categoryName: data.category_name,
           categoryImage: data.category_image,
-        });
+        }); */
         if (error) {
           throw error;
         }
@@ -50,11 +56,11 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
 
   //Handle function for the inputs
   const handleInput = (e) => {
-    const value = e.target.value.length > 0 ? e.target.value : null;
+    const value = e.target.value;
     console.log("THIS IS THE INPUT VALUE: ", value);
-
-    setInputs({ ...inputs, [e.target.name]: value });
-    console.log("THIS IS INPUTS: ", { ...inputs, [e.target.name]: value });
+    setForm({...form, [e.target.name]: value })
+    /* setInputs({ ...inputs, [e.target.name]: value }); */
+    console.log("THIS IS FORM: ", { ...form, [e.target.name]: value });
   };
 
   const updateDatabase = async () => {
@@ -63,8 +69,8 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
         const { data, error } = await supabase
           .from("products_categories")
           .update({
-            category_name: inputs.categoryName,
-            category_image: inputs.categoryImage,
+            category_name: form.title,
+            category_image: form.image,
           })
           .eq("id", categoryForm.id);
         getCategories();
@@ -78,12 +84,12 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
           .from("products_categories")
           .insert([
             {
-              category_name: inputs.categoryName,
-              category_image: inputs.categoryImage,
+              category_name: form.title,
+            category_image: form.image,
             },
           ]);
         getCategories();
-        console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName);
+        console.log("THIS IS TITLE FROM FORM: ", form.title);
 
         console.log("THIS IS THE RESPONSE FOR THE ADD CATEGORY: ", data);
 
@@ -105,9 +111,9 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
         <div className="product-form">
           <span
             className="product-form-close-button"
-            onClick={(e) => setCategoryForm({ show: "none", id: "" })}
+            onClick={() => setCategoryForm({ show: "none", id: "" })}
           >
-            &times;
+            &#x2715;
           </span>
           <h1>{categoryForm.show === "add" ? "NEW" : "EDIT"} CATEGORY</h1>
           <form onSubmit={handleSubmit}>
