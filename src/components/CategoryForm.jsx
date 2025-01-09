@@ -127,7 +127,7 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
             <label htmlFor="image">Category image: </label>
             <img src={form.image} className="product-form-image" />
             <input
-              type="text"
+              type="hidden"
               name="image"
               id="image"
               value={form.image}
