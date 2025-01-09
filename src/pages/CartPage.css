@@ -75,15 +75,19 @@
   margin-left: 10px;
 }
 
-.empty-cart-icon{
-  width: 200px;
-}
-
 .cart-empty-message {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
   text-align: center;
-  align-self: center;
   font-size: 2rem;
   margin-top: 50px;
+}
+
+.empty-cart-icon {
+  width: 100px;
+  margin-bottom: 20px; 
 }
 
 .total-price {

@@ -10,7 +10,10 @@ const getPrice = (cart) => {
     total += cart[i].price * cart[i].quantity;
   }
 
-  return total;
+  let roundedToTwo = Number(total.toFixed(2));
+
+  return roundedToTwo;
+
 };
 
 function CartProvider(props) {
