@@ -22,6 +22,7 @@ function Categories({categories, getCategories, setCategoryForm}) {
   return (
     <section>
       <div className="categories-wrapper">
+        
         {categories ? (
           categories.map((category) => {
             const handleDelete = async (e) => {
@@ -40,7 +41,9 @@ function Categories({categories, getCategories, setCategoryForm}) {
               }
             };
             return (
+              
               <article key={category.id} className="category-card">
+            
                 <Link to={`/category/${category.id}`}>
                   <div>
                     <img

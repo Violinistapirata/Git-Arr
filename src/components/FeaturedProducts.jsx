@@ -33,7 +33,7 @@ function FeaturedProducts() {
 
   return (
     <div>
-      <h1>Featured products</h1>
+      <h1 className="featured-products-title" >Featured products</h1>
       <section className="product-list">
         {featured &&
           featured.map((product) => {
