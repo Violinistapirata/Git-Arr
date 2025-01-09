@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 //ROUTES
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 //CONTEXTS
 //import { ProductsListProviderWrapper } from "./Contexts/productsList.context.jsx"; // remove - not in use
