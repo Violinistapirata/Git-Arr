@@ -1,7 +1,10 @@
 .categories-wrapper {
     margin-top: 100px;
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(2, 1fr);  */
     gap: 50px; 
     padding: 20px;
     background-color: #f2f2f3; 

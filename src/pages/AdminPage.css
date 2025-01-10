@@ -24,6 +24,16 @@
 			transform: none;
 		}
 	}
+	.category-card {
+		height: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: 5px;
+		&:hover {
+			transform: none;
+		}
+	}
 	button {
 		background-color: #484848;
 		color: #fff;

@@ -20,11 +20,6 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
 
   const [form, setForm] = useState(categoryColumns);
   //State for the input values
-  const [inputs, setInputs] = useState({
-    categoryName: "",
-    categoryImage: "",
-  });
-  const { categoryName, categoryImage } = inputs;
 
   const getCategory = async () => {
     try {
