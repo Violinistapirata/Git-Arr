@@ -24,17 +24,15 @@ function CategoryPage() {
 
 	const navigate = useNavigate();
 
-	
-    const { categoryId } = useParams();
+	const { categoryId } = useParams();
 
-    // const GetCatId = () => {
-    //     //const routeParams = useParams();
-    //     const { categoryId } = useParams();
-    //     setCatId(categoryId)
-    //     console.log(categoryId);
-        
-    // }
-   
+	// const GetCatId = () => {
+	//     //const routeParams = useParams();
+	//     const { categoryId } = useParams();
+	//     setCatId(categoryId)
+	//     console.log(categoryId);
+
+	// }
 
 	const getProducts = async () => {
 		try {
@@ -76,22 +74,21 @@ function CategoryPage() {
 	};
 
 	useEffect(() => {
-        getCategory();
+		getCategory();
 	}, [categoryId]);
 
 	useEffect(() => {
 		getProducts();
-	}, [catOrder,categoryId]);
+	}, [catOrder, categoryId]);
 
 	// console.log("state products", products);
 	// console.log("state category", category);
 	// console.log("category id", catId);
-    
 
 	if (category !== null) {
 		return (
 			<>
-				<h1>{category.category_name}</h1>
+				<h1 className="category-title">{category.category_name}</h1>
 				<div className="order-bar">
 					<div className="order-by">
 						<label htmlFor="orderBy">Order by</label>
@@ -106,25 +103,29 @@ function CategoryPage() {
 						</select>
 					</div>
 					<div className="order">
-						<label htmlFor="asc">Order ascending</label>
-						<input
-							onClick={() => {
-								saveOrder(true);
-							}}
-							type="radio"
-							name="order"
-							id="asc"
-							defaultChecked={true}
-						/>
-						<label htmlFor="desc">Order descending</label>
-						<input
-							onClick={() => {
-								saveOrder(false);
-							}}
-							type="radio"
-							name="order"
-							id="desc"
-						/>
+						<div className="radio-group">
+							<label htmlFor="asc">Order ascending</label>
+							<input
+								onClick={() => {
+									saveOrder(true);
+								}}
+								type="radio"
+								name="order"
+								id="asc"
+								defaultChecked={true}
+							/>
+						</div>
+						<div className="radio-group">
+							<label htmlFor="desc">Order descending</label>
+							<input
+								onClick={() => {
+									saveOrder(false);
+								}}
+								type="radio"
+								name="order"
+								id="desc"
+							/>
+						</div>
 					</div>
 				</div>
 				<section className="product-list">

@@ -1,12 +1,38 @@
+h1.category-title {
+    margin-top: 40px;
+    text-align: center;
+}
 .order-bar {
+    border: 1px solid #dbdbdb;
+    padding: 0.3rem 0;
+    margin-top: 1rem;
     display: flex;
+    justify-content: center;
+    label {
+        white-space: nowrap;
+        font-weight: bold;
+    }
+    .order-by, .order {
+        display: flex;
+        align-items: center;
+        
+    }
     .order-by {
-        margin-right: 1rem;
+        margin-right: 2rem;
+        gap: 0.5rem;
+    }
+    .order {
+        gap: 1rem;
+        .radio-group {
+            display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        }
     }
     select {
         display: block;
         width: 100%;
-        padding: 0.375rem 0.75rem;
+        padding: 0.275rem 0.75rem;
         font-size: 1rem;
         line-height: 1.5;
         color: #222;
@@ -14,5 +40,15 @@
         background-clip: padding-box;
         border: 1px solid #ccc;
         border-radius: 0.25rem;
+    }
+    [type="radio"] {
+        width: 1.2rem;
+        height: 1.2rem;
+        vertical-align: top;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: 1px solid rgba(0, 0, 0, .25);
     }
 }
