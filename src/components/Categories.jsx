@@ -58,7 +58,7 @@ function Categories({categories, getCategories, setCategoryForm}) {
                     <button onClick={() => setCategoryForm({show: "edit", id: category.id})}>Edit</button>
                     <button onClick={(e) => handleDelete(e)}>
                       <img
-                        src="../src/assets/trash-can.png"
+                        src="../../public/trash-can.png"
                         alt="delete"
                         className="delete-button"
                       />
