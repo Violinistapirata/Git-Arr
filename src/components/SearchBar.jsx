@@ -10,7 +10,7 @@ import { searchContext } from "../Contexts/search.context";
 
 function SearchBar() {
 	const { search, setSearch } = useContext(searchContext);
-    console.log(search);
+    
     
 	const navigate = useNavigate();
 

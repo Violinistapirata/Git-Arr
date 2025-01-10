@@ -13,7 +13,7 @@ import "./CategoryPage.css";
 function SearchPage() {
 	const { search, searchResult } = useContext(searchContext);
 
-	console.log(searchResult);
+	
 	
 
 	if (searchResult) {

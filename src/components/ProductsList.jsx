@@ -22,7 +22,7 @@ function ProductsList({productForm,setProductForm}) {
           .select("*, products_categories(category_name)")
           .order("title",{ascending: true})
         setProducts(data);
-        console.log("THIS IS PRODUCT", data);
+        
         
         if (error) {
           throw error;

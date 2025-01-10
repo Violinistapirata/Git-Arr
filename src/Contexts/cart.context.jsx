@@ -39,7 +39,7 @@ function CartProvider(props) {
         .select("*")
         .in("id", cartProductIds); // este codigo estaba dentro del array del console.log -> cart.data[0].product_id
 
-      console.log("these are the products", products); // AQUi pondremos la data del cart "product_ids
+       // AQUi pondremos la data del cart "product_ids
 
       // en productos, busco los que coinciden con los del carrito y asigno las cantidades a cada uno de los productos
       const productsWithQuantity = products.data.map((product) => {
@@ -55,13 +55,13 @@ function CartProvider(props) {
 
       setCart(productsWithQuantity);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   const addItem = async (item) => {
     try {
-      console.log({ item });
+      
       const cartIds = cart.map((cartItem) => cartItem.id);
       const newCart = [...cartIds, item.id];
       // supabase inserta el row entero de la tabla cart
@@ -69,7 +69,7 @@ function CartProvider(props) {
         .from("cart")
         .update([{ product_ids: newCart }])
         .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f");
-      console.log({ data, error });
+      
 
       //buscamos si el carrito existe,si existe lo incrementa y si no existe lo agrega
       const existingProduct = cart.findIndex(
@@ -103,10 +103,10 @@ function CartProvider(props) {
       .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f");
 
     if (error) {
-      console.log(error);
+      console.error(error);
     }
 
-    console.log({ productsFromObjectToString, newCart, cart, item });
+    
     setCart(newCart);
   };
 
@@ -124,7 +124,7 @@ function CartProvider(props) {
       supabaseCart = [...supabaseCart, ...newQuantity];
     });
 
-    console.log({ supabaseCart });
+    
     const { error } = await supabase
       .from("cart")
       .update([{ product_ids: supabaseCart }])

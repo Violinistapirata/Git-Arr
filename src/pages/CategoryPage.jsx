@@ -31,7 +31,7 @@ function CategoryPage() {
     //     //const routeParams = useParams();
     //     const { categoryId } = useParams();
     //     setCatId(categoryId)
-    //     console.log(categoryId);
+    //     
         
     // }
    
@@ -43,7 +43,7 @@ function CategoryPage() {
 				.select("*, products_categories(category_name)")
 				.eq("category", `${categoryId}`)
 				.order(catOrder.orderBy, { ascending: catOrder.ascending });
-			//console.log("this is data: ", data);
+			//
 
 			setProducts(data);
 		} catch (error) {
@@ -57,7 +57,7 @@ function CategoryPage() {
 				.select("*")
 				.eq("id", `${categoryId}`);
 
-			//console.log(data[0]);
+			//
 			if (data) {
 				setCategory(data[0]);
 			} else {
@@ -83,9 +83,9 @@ function CategoryPage() {
 		getProducts();
 	}, [catOrder,categoryId]);
 
-	// console.log("state products", products);
-	// console.log("state category", category);
-	// console.log("category id", catId);
+	// 
+	// 
+	// 
     
 
 	if (category !== null) {

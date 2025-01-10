@@ -4,9 +4,9 @@ import supabase from "../supabase/config";
 function ProductImageUpload({ imageName, form, setForm }) {
 	const [file, setFile] = useState(null);
 	const [status, setStatus] = useState("");
-	console.log("file:", file);
-	console.log("imageName:", imageName);
-	console.log("setForm:", setForm);
+	
+	
+	
 
 	const uploadImage = async (file) => {
 		try {
@@ -35,8 +35,8 @@ function ProductImageUpload({ imageName, form, setForm }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log("handleSubmit called");
-		console.log(file.name);
+		
+		
 
 		uploadImage(file);
 	};

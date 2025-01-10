@@ -18,7 +18,7 @@ function Categories({categories, getCategories, setCategoryForm}) {
   useEffect(() => {
     getCategories();
   }, []);
-  console.log("THIS IS CATEGORIES: ", categories);
+  
   return (
     <section>
       <div className="categories-wrapper">

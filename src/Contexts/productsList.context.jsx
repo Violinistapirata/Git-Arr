@@ -13,7 +13,7 @@ function ProductsListProviderWrapper(props) {
   const getData = async () => {
     const { data, error } = await supabase.from("products").select("*");
     error ? console.error(error) : setProductsList(data);
-    console.log("THIS IS THE PRODUCTS LIST FROM THE DATABASE", productsList);
+    
   };
 
   useEffect(() => {

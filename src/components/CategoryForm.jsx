@@ -37,7 +37,7 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
             title: data[0].category_name,
           image: data[0].category_image
           })
-          console.log("THIS IS FORM.TITLE: ", data[0].category_name, "THIS IS FORM.IMAGE: ", data[0].category_image);
+          
           
         /* setInputs({
           categoryName: data.category_name,
@@ -57,10 +57,10 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
   //Handle function for the inputs
   const handleInput = (e) => {
     const value = e.target.value;
-    console.log("THIS IS THE INPUT VALUE: ", value);
+    
     setForm({...form, [e.target.name]: value })
     /* setInputs({ ...inputs, [e.target.name]: value }); */
-    console.log("THIS IS FORM: ", { ...form, [e.target.name]: value });
+    
   };
 
   const updateDatabase = async () => {
@@ -74,9 +74,9 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
           })
           .eq("id", categoryForm.id);
         getCategories();
-        console.log("THIS IS CATEGORY NAME FROM INPUTS: ", inputs.categoryName);
+        
 
-        console.log("THIS IS THE RESPONSE FOR THE EDIT: ", data);
+        
 
         if (error) throw error;
       } else if (categoryForm.show === "add") {
@@ -89,9 +89,9 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
             },
           ]);
         getCategories();
-        console.log("THIS IS TITLE FROM FORM: ", form.title);
+        
 
-        console.log("THIS IS THE RESPONSE FOR THE ADD CATEGORY: ", data);
+        
 
         if (error) throw error;
       }
