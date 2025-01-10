@@ -42,28 +42,24 @@ function Categories({categories, getCategories, setCategoryForm}) {
             };
             return (
               
-              <article key={category.id} className="category-card">
+              <article key={category.id} className="product-card">
             
                 <Link to={`/category/${category.id}`}>
                   <div>
-                    <img
-                      src= /*"../src/assets/guitar-images/mock-category-icon.png"*/ {category.category_image}
+                    <img className="product-image"
+                      src= {category.category_image}
                       alt={category.category_name}
                     />
-                    <b>{category.category_name}</b>
+                    <h3 className="product-title">{category.category_name}</h3>
                   </div>
                 </Link>
                 {location === "/admin" && (
-                  <>
-                    <button onClick={() => setCategoryForm({show: "edit", id: category.id})}>Edit</button>
-                    <button onClick={(e) => handleDelete(e)}>
-                      <img
-                        src="../../public/trash-can.png"
-                        alt="delete"
-                        className="delete-button"
-                      />
+                  <div className="admin-buttons">
+                    <button onClick={() => setCategoryForm({show: "edit", id: category.id})} className="edit-button">Edit</button>
+                    <button onClick={(e) => handleDelete(e)} className="delete-button">
+                      Delete
                     </button>
-                  </>
+                  </div>
                 )}
               </article>
             );
