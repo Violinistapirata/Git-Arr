@@ -19,7 +19,7 @@ function SearchPage() {
 	if (searchResult) {
 		return (
 			<>
-				<h1>You searched for "{search}"</h1>
+				<h1 className="category-title">You searched for "{search}"</h1>
 
 				<section className="product-list">
 					{searchResult.map((product) => {
