@@ -42,6 +42,10 @@ function ProductForm({ productForm, setProductForm }) {
 				.select("*")
 				.eq("id", `${id}`);
 
+			// si tenemos error no vamos a hacer el setForm, es una buena práctica incluirlo antes 
+			if (error) {
+			  throw error;
+			}
 			setForm({
 				id: data[0].id,
 				title: data[0].title,
@@ -53,9 +57,6 @@ function ProductForm({ productForm, setProductForm }) {
 				featured: data[0].featured,
 			});
 
-      if (error) {
-        throw error;
-      }
     } catch (error) {
       console.error(error);
     }
