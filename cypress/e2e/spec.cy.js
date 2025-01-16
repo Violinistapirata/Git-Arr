@@ -16,5 +16,4 @@ describe('template spec', () => {
     cy.get('h2').should('have.class', 'product-details-stock').contains('IN STOCK: 12');
     cy.get('button').should('have.class', 'add-to-cart-button').contains('Add to cart');
   })
-
 })
