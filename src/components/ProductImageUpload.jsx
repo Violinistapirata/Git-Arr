@@ -3,7 +3,7 @@ import supabase from "../supabase/config";
 
 function ProductImageUpload({ imageName, form, setForm }) {
 	const [file, setFile] = useState(null);
-	const [status, setStatus] = useState("");
+	const [status, setStatus] = useState(""); // si no usamos el status, lo podemos borrar
 	
 	
 	

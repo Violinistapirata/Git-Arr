@@ -15,10 +15,11 @@ function NavBar() {
 
 	useEffect(() => {
 		let counter = 0;
-		cart.map((cartElement) => {
-			counter += cartElement.quantity || 0 
-			return cart;
-		})
+		// el map nos sirve para crear un nuevo array. Si no lo guardamos en una variable, no se guarda el resultado.
+		// basta con hacer un forEach para recorrer el array y hacer lo que necesitamos en este caso
+		cart.forEach((cartElement) => {
+			counter += cartElement.quantity || 0;
+		});
 		setCartCount(counter)
 	}, [cart])
 
@@ -28,10 +29,10 @@ function NavBar() {
 				const { data, error } = await supabase
 					.from("products_categories")
 					.select("id, category_name, category_image");
-				setCategories(data);
 				if (error) {
 					throw error;
 				}
+				setCategories(data);
 			} catch (error) {
 				console.error(error);
 			}
