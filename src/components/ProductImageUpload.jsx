@@ -1,17 +1,20 @@
-import { useState } from "react";
+//DATABASE
 import supabase from "../supabase/config";
+
+//HOOKS
+import { useState } from "react";
+
+/* ----------------------------------------------- */
 
 function ProductImageUpload({ imageName, form, setForm }) {
 	const [file, setFile] = useState(null);
-	const [status, setStatus] = useState("");
-	
-	
-	
+	// const [status, setStatus] = useState("");
+	console.log("THIS IS FILE", file);
 
 	const uploadImage = async (file) => {
 		try {
 			const storageUrl =
-				"https://whpbdrinqtvellfpwtgs.supabase.co/storage/v1/object/public/";
+				"https://sgyjglrnvmsfdrhykmxl.storage.supabase.co/storage/v1/s3/";
 			const randNumber = Math.ceil(Math.random() * 31417561234);
 			const trimName = imageName.replaceAll(" ", "");
 
@@ -22,9 +25,10 @@ function ProductImageUpload({ imageName, form, setForm }) {
 				.upload(fileName, file, {
 					cacheControl: "3600",
 					upsert: false,
-				});
-			const fullImageUrl = storageUrl + data.fullPath;
-			setForm({ ...form, image: fullImageUrl });
+				}
+			);	
+			const fullImageUrl = storageUrl + data.fullPath;		
+			setForm({ ...form, image: fullImageUrl });	
 			if (error) {
 				throw error;
 			}

@@ -112,13 +112,7 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
           </span>
           <h1>{categoryForm.show === "add" ? "NEW" : "EDIT"} CATEGORY</h1>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Category name: </label>
-            <input
-              type="text"
-              name="title"
-              value={form.title}
-              onChange={handleInput}
-            />
+          <div className="edit-image-buttons">
             <label htmlFor="image">Category image: </label>
             <img src={form.image} className="product-form-image" />
             <input
@@ -133,9 +127,19 @@ function CategoryForm({ getCategories, categoryForm, setCategoryForm }) {
               setForm={setForm}
               imageName={form.title}
             />
-            <button type="submit">
-              {categoryForm.show === "add" ? "ADD" : "UPDATE"} CATEGORY
-            </button>
+          </div>
+          <div className="form-group">
+            <label htmlFor="title">Category name: </label>
+            <input
+              type="text"
+              name="title"
+              value={form.title}
+              onChange={handleInput}
+            />
+          </div>
+          <button type="submit">
+            {categoryForm.show === "add" ? "ADD" : "UPDATE"} CATEGORY
+          </button>
           </form>
         </div>
       </div>

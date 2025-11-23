@@ -3,6 +3,8 @@ import ProductsList from "../components/ProductsList"
 import Categories from "../components/Categories"
 import ProductForm from "../components/ProductForm"
 import CategoryForm from "../components/CategoryForm"
+
+//HOOKS
 import { useState } from "react"
 
 //CSS
