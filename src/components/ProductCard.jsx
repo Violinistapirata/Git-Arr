@@ -46,7 +46,7 @@ function ProductCard({
 					>
 						Edit
 					</button>
-					<button className="delete-button" onClick={(e) => handleDelete(e)}>
+					<button className="delete-button" /*onClick={(e) => handleDelete(e)}*/>
 						Delete
 					</button>
 				</div>
