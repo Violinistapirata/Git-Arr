@@ -21,8 +21,8 @@ function Categories({categories, getCategories, setCategoryForm}) {
   
   return (
     <section>
+      <h2>Categories</h2>
       <div className="categories-wrapper">
-        
         {categories ? (
           categories.map((category) => {
             const handleDelete = async (e) => {
@@ -68,7 +68,7 @@ function Categories({categories, getCategories, setCategoryForm}) {
           <p>No categories available</p>
         )}
       </div>
-    </section>
+    </section> 
   );
 }
 

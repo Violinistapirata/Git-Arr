@@ -5,7 +5,6 @@ import { createRoot } from "react-dom/client";
 import { HashRouter as Router } from "react-router-dom";
 
 //CONTEXTS
-//import { ProductsListProviderWrapper } from "./Contexts/productsList.context.jsx"; // remove - not in use
 import { CartProvider } from "./Contexts/cart.context.jsx";
 import { SearchProviderWrapper } from "./Contexts/search.context.jsx";
 

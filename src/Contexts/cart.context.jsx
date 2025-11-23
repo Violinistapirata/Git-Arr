@@ -1,6 +1,13 @@
-import { createContext } from "react";
-import { useState, useEffect } from "react";
+//DATABASE
 import supabase from "../supabase/config";
+
+//CONTEXT
+import { createContext } from "react";
+
+//HOOKS
+import { useState, useEffect } from "react";
+
+/* ----------------------------------------------- */
 
 const cartContext = createContext();
 
@@ -13,7 +20,6 @@ const getPrice = (cart) => {
   let roundedToTwo = Number(total.toFixed(2));
 
   return roundedToTwo;
-
 };
 
 function CartProvider(props) {
@@ -25,7 +31,7 @@ function CartProvider(props) {
       const supabaseCart = await supabase
         .from("cart")
         .select("*")
-        .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f"); // Aqui deber;iamos buscar un cart en concreto
+        .eq("id", "88763458-4058-47c6-aa6e-ecfa042e409f"); // Aqui deberíamos buscar un cart en concreto
 
       const cartProductIds = supabaseCart.data[0].product_ids;
 
@@ -39,7 +45,7 @@ function CartProvider(props) {
         .select("*")
         .in("id", cartProductIds); // este codigo estaba dentro del array del console.log -> cart.data[0].product_id
 
-       // AQUi pondremos la data del cart "product_ids
+       // Aquí pondremos la data del cart "product_ids"
 
       // en productos, busco los que coinciden con los del carrito y asigno las cantidades a cada uno de los productos
       const productsWithQuantity = products.data.map((product) => {

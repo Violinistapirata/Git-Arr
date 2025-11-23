@@ -8,6 +8,7 @@ import { useState } from "react"
 //CSS
 import "./AdminPage.css"
 
+/* ----------------------------------------------- */
 
 function AdminPage({categories, getCategories}) {
   const [productForm, setProductForm] = useState({show:"none", id:""})
@@ -15,7 +16,7 @@ function AdminPage({categories, getCategories}) {
   
   return (
     <div className="admin-page">
-      <h1>ADMIN PAGE</h1>
+      <h1>ADMIN VIEW</h1>
       <section>
         <h2>Products</h2>
         <ProductsList
@@ -27,7 +28,6 @@ function AdminPage({categories, getCategories}) {
         </button>
       </section>
       <section>
-        <h2>Categories</h2>
         <Categories
           categories={categories}
           getCategories={getCategories}

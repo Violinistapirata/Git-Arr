@@ -1,6 +1,13 @@
-import { createContext } from "react";
-import { useState, useEffect } from "react";
+//DATABASE
 import supabase from "../supabase/config";
+
+//CONTEXT
+import { createContext } from "react";
+
+//HOOKS
+import { useState, useEffect } from "react";
+
+/* ----------------------------------------------- */
 
 const searchContext = createContext();
 

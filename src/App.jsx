@@ -1,3 +1,6 @@
+//DATABASE
+import supabase from "./supabase/config.js";
+
 //ROUTES
 import { Routes, Route } from "react-router-dom";
 
@@ -14,8 +17,9 @@ import SearchPage from "./pages/SearchPage.jsx";
 //COMPONENTS
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+
+//HOOKS
 import { useState } from "react";
-import supabase from "./supabase/config.js";
 
 /* ----------------------------------------------- */
 
@@ -45,16 +49,13 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage categories={categories} getCategories={getCategories}/>}/>
         <Route path="/about" element={<AboutPage/>} />
-       {/* <div className="page-container">*/}
-          <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
-          <Route path="/category/:categoryId" element={<CategoryPage/>}/>
-          <Route path="/search" element={<SearchPage/>}/>
-          <Route path="/cart" element={<CartPage/>} />
-          <Route path="/admin" element={<AdminPage  categories={categories} getCategories={getCategories}/>}/>
-          <Route path="*" element={<ErrorPage/>}/>
-       { /*</div>*/}
-      </Routes>
-      
+        <Route path="/product/:productId" element={<ProductDetailsPage/>}/>
+        <Route path="/category/:categoryId" element={<CategoryPage/>}/>
+        <Route path="/search" element={<SearchPage/>}/>
+        <Route path="/cart" element={<CartPage/>} />
+        <Route path="/admin" element={<AdminPage  categories={categories} getCategories={getCategories}/>}/>
+        <Route path="*" element={<ErrorPage/>}/>
+      </Routes> 
       <Footer />
     </>
   );
