@@ -6,11 +6,14 @@
 
 |        Routes        |         Description                 |
 |----------------------|-------------------------------------|
-| /                    | This route show the Home Page       |
-| /about               | This route show the About Page      |
-| /product/:productId  | This route show the product detail  |
-| /cart                | This route show the Cart Page       |
-| /*                   | This route show the Error Page      |   
+| /                    | This route shows the Home Page       |
+| /about               | This route shows the About Page      |
+| /product/:productId  | This route shows the product detail  |
+| /category/:categoryId  | This route shows the Category Page |
+| /search                | This route shows the Search Page   |
+| /cart                | This route shows the Cart Page       |
+| /admin                | This route shows the Admin Page     |
+| /*                   | This route shows the Error Page      |   
 
 ## Integrantes
 Sven Andersson, Èric Masip, Roxana Ferramola 
