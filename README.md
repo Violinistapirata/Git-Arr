@@ -4,16 +4,16 @@
 
 ## App routes
 
-|        Routes        |         Description                 |
+|        Routes        |         Leads to                 |
 |----------------------|-------------------------------------|
-| /                    | This route shows the Home Page       |
-| /about               | This route shows the About Page      |
-| /product/:productId  | This route shows the product detail  |
-| /category/:categoryId  | This route shows the Category Page |
-| /search                | This route shows the Search Page   |
-| /cart                | This route shows the Cart Page       |
-| /admin                | This route shows the Admin Page     |
-| /*                   | This route shows the Error Page      |   
+| /                    |  Home Page       |
+| /about               |  About Page      |
+| /product/:productId  |  Product Detail Page |
+| /category/:categoryId  |  Category Page |
+| /search                |  Search Page   |
+| /cart                |  Cart Page       |
+| /admin                |  Admin Page     |
+| /*                   |  Error Page      |   
 
 ## Integrantes
 Sven Andersson, Èric Masip, Roxana Ferramola 
